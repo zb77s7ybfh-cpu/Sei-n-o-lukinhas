@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Michely Modas · Ropa brasileña en Guayaramerín</title>
-<meta name="description" content="Ropa de Brasil que cruza el Mamoré cada semana. Jean, bermuda y básicos para mujer y hombre, del 36 al 46. Av. Federico Román, Guayaramerín.">
+<meta name="description" content="Ropa de Brasil que cruza el Mamoré cada semana. Jean, vestidos, conjuntos y básicos para mujer y hombre. Av. Federico Román, Guayaramerín.">
 <meta name="theme-color" content="#F6EFEC">
 
 <!-- DEPLOY STEP: cambiar las dos URL absolutas por el dominio real antes de publicar -->
 <meta property="og:title" content="Michely Modas · Ropa brasileña en Guayaramerín">
-<meta property="og:description" content="Ropa de Brasil que cruza el Mamoré cada semana. Del 36 al 46, en la Federico Román.">
+<meta property="og:description" content="Ropa de Brasil que cruza el Mamoré cada semana. Jean, vestidos y básicos, en la Federico Román.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://PENDIENTE/">
 <meta property="og:image" content="https://PENDIENTE/assets/hero-ending.jpg">
@@ -219,13 +219,23 @@ p{margin:0}
 .stag.done>*:nth-child(5),.stag.done>*:nth-child(6),.stag.done>*:nth-child(7),.stag.done>*:nth-child(8){transition-delay:0s !important}
 
 /* ---------- vitrine ---------- */
-.gridhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px)}
+.gridhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(26px,4vh,40px)}
+.filters{display:flex;gap:9px;flex-wrap:wrap}
+.fchip{font-family:var(--mono);font-size:.75rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:10px 17px;border:1.5px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink-soft);
+  cursor:pointer;white-space:nowrap;
+  transition:background .32s var(--ease),border-color .32s var(--ease),color .32s var(--ease),transform .32s var(--ease)}
+.fchip:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
+.fchip.on{background:var(--ink);border-color:var(--ink);color:var(--canvas)}
+@media (pointer:coarse){.fchip{min-height:44px}}
+.count{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft);letter-spacing:.04em;margin:16px 0 clamp(22px,3.4vh,34px)}
+.card.hide{display:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:clamp(14px,2vw,26px)}
 .card{position:relative;background:var(--panel);border-radius:14px;overflow:hidden;border:1px solid var(--line);
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(23,36,59,.1);border-color:#CDBAB3}
-.card .shot{position:relative;aspect-ratio:1256/1185;overflow:hidden;background:var(--canvas-deep)}
-.card .shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.card .shot{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--canvas-deep)}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1.1s var(--ease)}
 .card:hover .shot img{transform:scale(1.035)}
 .card .meta{padding:14px 16px 17px}
 .card .nm{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.012em}
@@ -382,7 +392,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
     <div class="band settle e-rise" data-a="0.72" data-b="1" data-last="1" data-ramp="0.05">
       <p class="line" data-split="word">Michely Modas</p>
-      <p class="sub">Ropa de Brasil, en la Federico Román. Del 36 al 46.</p>
+      <p class="sub">Ropa de Brasil, en la Federico Román. Jean, vestidos y básicos.</p>
       <div class="cta">
         <a class="btn js-wa" href="#lista" data-msg="Hola, ya guardé el número. Quiero entrar a la lista de lo nuevo.">Guardar el número</a>
         <a class="btn ghost" href="#nuevo" style="color:#FBF7F4;border-color:rgba(251,247,244,.45)">Ver lo que hay</a>
@@ -418,6 +428,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <a class="btn ghost js-wa" href="#lista" data-msg="Hola, quiero saber qué hay disponible ahora.">Preguntar disponibilidad</a>
     </div>
 
+    <div class="filters rv" id="filters" role="group" aria-label="Filtrar por tipo de prenda"></div>
+    <p class="count" id="count" aria-live="polite"></p>
     <div class="grid stag" id="grid"></div>
   </div>
 </section>
@@ -491,12 +503,16 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <div style="margin-top:28px"><a class="btn js-wa" href="#lista" data-msg="Hola, quiero las medidas de una pieza. ¿Me podés pasar cintura, cadera y largo?">Pedir medidas</a></div>
     </div>
     <div class="rv">
-      <p class="kick">Lo que manejamos</p>
+      <p class="kick">En jean y pantalón</p>
       <div class="sizes">
         <div class="sz">36</div><div class="sz">38</div><div class="sz">40</div>
         <div class="sz">42</div><div class="sz">44</div><div class="sz">46</div>
       </div>
-      <p class="lede" style="margin-top:22px">No todas las piezas llegan en todas las tallas, y de cada modelo entran pocas. Por eso conviene preguntar antes.</p>
+      <p class="kick" style="margin-top:30px">En blusa y vestido</p>
+      <div class="sizes">
+        <div class="sz">P</div><div class="sz">M</div><div class="sz">G</div>
+      </div>
+      <p class="lede" style="margin-top:24px">No todas las piezas llegan en todas las tallas, y de cada modelo entran pocas. Por eso conviene preguntar antes.</p>
     </div>
   </div>
 </section>
@@ -597,23 +613,45 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 var WHATSAPP = "PENDIENTE";
 
 /* ---------- piezas ---------- */
+var CATS = [
+  {k:"todo",      l:"Todo"},
+  {k:"vestidos",  l:"Vestidos"},
+  {k:"conjuntos", l:"Conjuntos"},
+  {k:"blusas",    l:"Blusas"},
+  {k:"jean",      l:"Jean"},
+  {k:"hombre",    l:"Hombre"}
+];
+
+/* t:"" muestra "Consultar tallas". PENDIENTE: las tallas reales de los vestidos. */
 var PIEZAS = [
-  {f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46"},
-  {f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46"},
-  {f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46"},
-  {f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46"},
-  {f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46"},
-  {f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46"},
-  {f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46"},
-  {f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46"},
-  {f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44"},
-  {f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46"},
-  {f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46"},
-  {f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46"},
-  {f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46"},
-  {f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46"},
-  {f:"masculino-polo-preta.jpg",       n:"Polo negra",         m:"Driton", r:"",      t:""},
-  {f:"masculino-camisa-azul.jpg",      n:"Camisa celeste",     m:"Driton", r:"",      t:""}
+  {c:"vestidos",  f:"vestido-rojo-volados.jpg",     n:"Vestido rojo con volados", m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-rojo-flores.jpg",      n:"Vestido rojo con flores",  m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-escote-rojo.jpg",      n:"Vestido escote joya",      m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-escote-colores.jpg",   n:"Escote joya, 4 colores",   m:"", r:"", t:"", d:"Rojo, blanco, beige y negro"},
+  {c:"vestidos",  f:"vestido-midi-rosa.jpg",        n:"Midi bordado rosa",        m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-midi-azul.jpg",        n:"Midi bordado azul",        m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-midi-beige.jpg",       n:"Midi bordado beige",       m:"", r:"", t:""},
+  {c:"vestidos",  f:"vestido-largo-rosa.jpg",       n:"Vestido largo con tajo",   m:"", r:"", t:""},
+  {c:"conjuntos", f:"conjunto-blanco.jpg",          n:"Conjunto blanco",          m:"", r:"", t:"", d:"Top con pedrería y pantalón"},
+  {c:"conjuntos", f:"conjunto-verde.jpg",           n:"Conjunto verde",           m:"", r:"", t:"", d:"Chaleco y pantalón"},
+  {c:"blusas",    f:"top-blanco-pedreria.jpg",      n:"Top blanco con pedrería",  m:"", r:"", t:""},
+  {c:"blusas",    f:"tranze-1907-blusa-rosa.jpg",   n:"Blusa cropped",            m:"Tranze", r:"1907", t:"P M G"},
+  {c:"jean", f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46"},
+  {c:"jean", f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46"},
+  {c:"jean", f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46"},
+  {c:"jean", f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46"},
+  {c:"jean", f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46"},
+  {c:"jean", f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46"},
+  {c:"jean", f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46"},
+  {c:"jean", f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46"},
+  {c:"jean", f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44"},
+  {c:"jean", f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46"},
+  {c:"jean", f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46"},
+  {c:"jean", f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46"},
+  {c:"hombre", f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46"},
+  {c:"hombre", f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46"},
+  {c:"hombre", f:"masculino-polo-preta.jpg",     n:"Polo negra",         m:"Driton", r:"",      t:""},
+  {c:"hombre", f:"masculino-camisa-azul.jpg",    n:"Camisa celeste",     m:"Driton", r:"",      t:""}
 ];
 
 var FAQ = [
@@ -647,10 +685,12 @@ $$(".js-wa").forEach(function(a){
   if(href){ a.href=href; a.target="_blank"; a.rel="noopener"; }
 });
 
-/* ---------- vitrine ---------- */
+/* ---------- vitrine com filtro ---------- */
 (function(){
-  var g = $("#grid"); if(!g) return;
-  PIEZAS.forEach(function(p,i){
+  var g = $("#grid"), fb = $("#filters"), cnt = $("#count");
+  if(!g) return;
+
+  PIEZAS.forEach(function(p){
     var msg = "Hola, me interesa "+p.n+(p.r?" (ref "+p.r+")":"")+". ¿La tenés disponible?";
     var href = waLink(msg);
     var tag = p.r
@@ -662,19 +702,46 @@ $$(".js-wa").forEach(function(a){
         +'<text class="tnum" x="20" y="48">'+p.r+'</text>'
         +'</svg>'
       : '';
+    var sub = p.d ? p.d : (p.m ? p.m+(p.r?' · Ref '+p.r:'') : '');
     var el = document.createElement("article");
     el.className="card";
+    el.setAttribute("data-cat",p.c);
     el.innerHTML =
       tag+
       '<div class="shot"><img src="assets/pecas/'+p.f+'" alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
       '<div class="meta">'+
         '<p class="nm">'+p.n+'</p>'+
-        '<p class="br">'+p.m+(p.r?' · Ref '+p.r:'')+'</p>'+
-        (p.t?'<p class="tl">Tallas '+p.t+'</p>':'')+
+        (sub?'<p class="br">'+sub+'</p>':'')+
+        '<p class="tl">'+(p.t?'Tallas '+p.t:'Consultar tallas')+'</p>'+
         '<a class="ask"'+(href?' href="'+href+'" target="_blank" rel="noopener"':' href="#lista"')+'>Preguntar por esta &rarr;</a>'+
       '</div>';
     g.appendChild(el);
   });
+
+  var cards = $$(".card",g);
+  function apply(k){
+    var n=0;
+    cards.forEach(function(c){
+      var on = (k==="todo" || c.getAttribute("data-cat")===k);
+      c.classList.toggle("hide",!on);
+      if(on) n++;
+    });
+    cnt.textContent = n + (n===1 ? " prenda" : " prendas");
+  }
+
+  CATS.forEach(function(c,i){
+    var b=document.createElement("button");
+    b.type="button"; b.className="fchip"+(i===0?" on":"");
+    b.textContent=c.l;
+    b.setAttribute("aria-pressed", i===0?"true":"false");
+    b.addEventListener("click",function(){
+      $$(".fchip",fb).forEach(function(o){o.classList.remove("on");o.setAttribute("aria-pressed","false")});
+      b.classList.add("on"); b.setAttribute("aria-pressed","true");
+      apply(c.k);
+    });
+    fb.appendChild(b);
+  });
+  apply("todo");
 })();
 
 /* ---------- faq ---------- */
