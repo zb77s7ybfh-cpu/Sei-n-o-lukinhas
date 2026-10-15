@@ -54,18 +54,25 @@ Tirada do mundo da filmagem: parede rosada da loja, azul do jeans, coral das pe�
 
 ```css
 :root{
-  --canvas:#F8F2F2;        /* rosa muito claro e frio, quase branco */
-  --canvas-deep:#EDDFE0;   /* rosa empoeirado, das faixas alternadas */
+  --canvas:#F7F4F4;        /* quase branco, com o véu da marca */
+  --canvas-deep:#EDE4E5;   /* mauve bem claro, das faixas alternadas */
   --panel:#FFFFFF;         /* cartões */
-  --ink:#1B2437;           /* azul-marinho profundo, do jeans */
-  --ink-soft:#525C6E;      /* texto secundário, 6,09:1 sobre o fundo */
-  --accent:#A83E55;        /* rosa vinho: só o botão principal e o foco */
-  --accent-hover:#8E3146;
-  --accent-soft:#F3DFE3;
+  --ink:#3E3238;           /* mauve profundo: o texto, 11,18:1 */
+  --ink-soft:#6B5A60;      /* secundário, 5,90:1 */
+  --accent:#77545C;        /* mauve da marca no tom que se lê, 5,51:1 com branco */
+  --accent-hover:#5F424A;
+  --accent-soft:#F2E3E6;
+  --brand:#845F66;         /* a cor exata do círculo do logo, medida no arquivo */
+  --rose:#C38B95;          /* rose gold escuro do M: só decoração, nunca texto */
+  --rose-light:#EBC1CB;    /* rose gold claro do M */
   --denim:#2E4C7E;
-  --line:#E0CFD1;
+  --line:#E0D3D5;
 }
 ```
+
+**De onde vieram.** Da folha da marca entregue pelo dono. A folha escreve `#6C646E` como cor base, mas a cor medida no próprio arquivo do logo é `#845F66`, mais quente e mais rosada. Vale a medida, porque é a imagem do logo que aparece na página. O gradiente rose gold `#EBC1CB` a `#C38B95` bate com o arquivo.
+
+**Regra do rose gold:** decoração apenas. Medido em 2,58 de contraste sobre o fundo, abaixo do piso de 3,0 até para texto grande. Vive na linha do percurso, nas bordas finas e nos brilhos, nunca em palavra.
 
 ---
 
@@ -73,11 +80,15 @@ Tirada do mundo da filmagem: parede rosada da loja, azul do jeans, coral das pe�
 
 | Papel | Fonte | Pesos |
 |---|---|---|
-| Display | Bricolage Grotesque | 700, 800 |
-| Corpo | Hanken Grotesk | 400, 500, 600 |
+| Display | **Prata** | 400 |
+| Corpo | Hanken Grotesk | 400, 500, 600, 700 |
 | Mono | DM Mono | 400, 500 |
 
-Nenhuma é Inter nem Roboto. O mono carrega referência, tamanho e rótulo pequeno. Acentos do espanhol conferidos com renderização real: ñ, á, é, í, ó, ú, ü, ¿ e ¡ saem corretos nas três.
+Prata é a fonte do próprio logo, nomeada na folha da marca. Tem um peso só, então os títulos usam 400 e o tamanho faz o trabalho do negrito. O nome das peças ficou na fonte de corpo, porque serif pequeno perde nitidez no cartão.
+
+Acentos conferidos com renderização real no navegador: ñ, á, é, í, ó, ú, ü, ¿ e ¡ saem corretos nas três famílias.
+
+**O logo.** O selo circular foi recortado da folha da marca e entra na navegação (34px) e no rodapé (46px), com recorte redondo. O ícone da aba é um desenho em vetor do selo: círculo mauve, anel claro e um M em rose gold.
 
 ---
 
