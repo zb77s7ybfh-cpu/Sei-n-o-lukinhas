@@ -687,7 +687,42 @@ var AP = (function(){
   var last = path.split("/").pop();
   return last ? last + "/" : "";
 })();
-function asset(rel){ return AP + rel; }
+/* A outra possibilidade. Se a primeira nao servir, a pagina troca sozinha. */
+var AP_ALT = (function(){
+  if (AP) return "";
+  var last = (location.pathname || "/").split("/").filter(Boolean).pop();
+  return (last && last.indexOf(".") === -1) ? last + "/" : "";
+})();
+var BASES = (AP === AP_ALT) ? [AP] : [AP, AP_ALT];
+var baseIdx = 0, healed = false;
+function asset(rel){ return BASES[baseIdx] + rel; }
+
+/* Chamado quando um arquivo nao carrega: troca a base e reaponta tudo. */
+function healAssets(){
+  if (healed || BASES.length < 2) return false;
+  healed = true; baseIdx = 1;
+  $$("img[data-rel]").forEach(function(im){
+    im.src = asset(im.getAttribute("data-rel"));
+  });
+  var sp = $("#statph");
+  if (sp) sp.style.backgroundImage = "url('" + asset("assets/hero-ending.jpg") + "')";
+  POSTER_URL = asset("assets/hero-poster.jpg");
+  VIDEO_URL  = asset("assets/hero-scrub.mp4");
+  if (typeof poster !== "undefined" && poster) poster.style.backgroundImage = "url('" + POSTER_URL + "')";
+  return true;
+}
+
+/* Toda imagem do site passa por aqui: guarda o caminho relativo e, se falhar,
+   pede o conserto e tenta de novo uma vez. */
+function wireImg(im, rel){
+  im.setAttribute("data-rel", rel);
+  im.addEventListener("error", function(){
+    if (im.getAttribute("data-tried")) return;
+    im.setAttribute("data-tried", "1");
+    if (healAssets()) im.src = asset(rel);
+  });
+  im.src = asset(rel);
+}
 
 var $  = function(s,r){return (r||document).querySelector(s)};
 var $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
@@ -697,7 +732,7 @@ function rng(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0
 
 /* ---------- liga as imagens estaticas na base certa ---------- */
 (function(){
-  $$("img[data-src]").forEach(function(im){ im.src = asset(im.getAttribute("data-src")); });
+  $$("img[data-src]").forEach(function(im){ wireImg(im, im.getAttribute("data-src")); });
   var sp = $("#statph");
   if (sp) sp.style.backgroundImage = "url('" + asset("assets/hero-ending.jpg") + "')";
 })();
@@ -735,13 +770,14 @@ $$(".js-wa").forEach(function(a){
     el.setAttribute("data-cat",p.c);
     el.innerHTML =
       tag+
-      '<div class="shot"><img src="'+asset("assets/pecas/"+p.f)+'" alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
+      '<div class="shot"><img alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
       '<div class="meta">'+
         '<p class="nm">'+p.n+'</p>'+
         (sub?'<p class="br">'+sub+'</p>':'')+
         '<p class="tl">'+(p.t?'Tallas '+p.t:'Consultar tallas')+'</p>'+
         '<a class="ask"'+(href?' href="'+href+'" target="_blank" rel="noopener"':' href="#lista"')+'>Preguntar por esta &rarr;</a>'+
       '</div>';
+    wireImg(el.querySelector(".shot img"), "assets/pecas/"+p.f);
     g.appendChild(el);
   });
 
@@ -1084,7 +1120,10 @@ function initHeroOnce(){
   var started=false;
   function go(){
     if(started) return; started=true;
-    loadHeroBlob().catch(loadHeroDirect).catch(failVideo);
+    loadHeroBlob()
+      .catch(loadHeroDirect)
+      .catch(function(e){ if(healAssets()) return loadHeroDirect(); throw e; })
+      .catch(failVideo);
   }
   var im=new Image(); im.onload=go; im.onerror=go; im.src=POSTER_URL;
   setTimeout(go,4000);
