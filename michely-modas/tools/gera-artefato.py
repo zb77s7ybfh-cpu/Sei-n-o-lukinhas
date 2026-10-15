@@ -20,10 +20,28 @@ import io, json, os, sys
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
 
-ANTES = 'function asset(rel){ return BASES[baseIdx] + rel; }'
-
-DEPOIS = """var BLOB = __MAPA__;
-function asset(rel){ return BLOB[rel] || (BASES[baseIdx] + rel); }"""
+TROCAS = [
+    (
+        "function asset(rel){ return BASES[baseIdx] + rel; }",
+        """var BLOB = __MAPA__;
+/* Vira true se /_blob/ nao responder aqui: ai a pagina volta aos caminhos
+   relativos sozinha. E o que salva esta copia se ela for parar numa
+   hospedagem de verdade, onde /_blob/ nao existe. */
+var semBlob = false;
+function asset(rel){
+  return (!semBlob && BLOB[rel]) ? BLOB[rel] : (BASES[baseIdx] + rel);
+}""",
+    ),
+    (
+        """function healAssets(){
+  if (healed || BASES.length < 2) return false;
+  healed = true; baseIdx = 1;""",
+        """function healAssets(){
+  if (!semBlob) { semBlob = true; }                  /* 1o: larga o /_blob/ */
+  else if (healed || BASES.length < 2) return false; /* ja tentou tudo */
+  else { healed = true; baseIdx = 1; }               /* 2o: troca a base */""",
+    ),
+]
 
 
 def main():
@@ -34,8 +52,10 @@ def main():
     mapa = json.load(io.open(os.path.join(AQUI, "blobs.json"), encoding="utf-8"))
     html = io.open(os.path.join(RAIZ, "index.html"), encoding="utf-8").read()
 
-    if html.count(ANTES) != 1:
-        sys.exit("a funcao asset() mudou de forma; ajuste ANTES neste script")
+    for alvo, _ in TROCAS:
+        if html.count(alvo) != 1:
+            sys.exit("o trecho abaixo mudou de forma; ajuste TROCAS neste "
+                     "script:\n" + alvo)
 
     # todo arquivo que a pagina pede tem que estar no mapa
     pedidos = set()
@@ -53,8 +73,9 @@ def main():
     if faltam:
         sys.exit("faltam no blobs.json: " + ", ".join(faltam))
 
-    corpo = DEPOIS.replace("__MAPA__", json.dumps(mapa, indent=2, sort_keys=True))
-    html = html.replace(ANTES, corpo)
+    for alvo, troca in TROCAS:
+        html = html.replace(
+            alvo, troca.replace("__MAPA__", json.dumps(mapa, indent=2, sort_keys=True)))
 
     if not os.path.isdir(saida):
         os.makedirs(saida)
