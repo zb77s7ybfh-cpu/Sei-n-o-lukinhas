@@ -862,7 +862,12 @@ $$(".js-wa").forEach(function(a){
         setTimeout(function(){e.target.classList.add("done")},1200);
       }
     });
-  },{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+  /* threshold 0: dispara assim que o bloco encosta na janela, qualquer que
+     seja a altura dele. Com um valor maior, um bloco mais alto que a tela
+     nunca alcanca a fracao pedida e nao aparece nunca -- foi o que
+     aconteceu com a vitrine no celular. A margem de baixo e que da o
+     tempo da entrada. */
+  },{threshold:0,rootMargin:"0px 0px -12% 0px"});
   $$(".rv,.stag").forEach(function(el){io.observe(el)});
 })();
 
