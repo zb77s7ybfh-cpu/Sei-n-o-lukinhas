@@ -30,7 +30,9 @@ Documento único do projeto. Guarda toda decisão tomada e é a fonte da verdade
 ### Pendências que só o dono responde
 
 1. ~~Número do WhatsApp~~ **recebido: +591 67820413, ligado nos 37 botões.**
-2. Grade de tamanhos dos 11 vestidos, conjuntos e tops novos. Hoje o cartão mostra "Consultar tallas".
+2. Grade de tamanhos. ~~Vestidos~~ **recebido: P, M, G nos oito vestidos.**
+   Faltam cinco peças, que ainda mostram "Consultar tallas": conjunto blanco,
+   conjunto verde, top blanco con pedrería, polo negra e camisa celeste.
 3. Instagram, se existir.
 4. Autorização do fornecedor para usar as fotos de catálogo da Tranze e da Driton.
 
