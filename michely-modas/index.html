@@ -176,7 +176,7 @@ p{margin:0}
 
 /* herói estático: cinco portões */
 .static-hero{display:none;position:relative;z-index:1;min-height:92vh;background:#10182a;color:#FBF7F4;overflow:hidden}
-.static-hero .ph{position:absolute;inset:0;background:url("assets/hero-ending.jpg") center/cover}
+.static-hero .ph{position:absolute;inset:0;background-size:cover;background-position:center}
 .static-hero .vl{position:absolute;inset:0;background:linear-gradient(185deg,rgba(6,10,20,.34) 0%,rgba(6,10,20,.56) 48%,rgba(6,10,20,.86) 100%)}
 .static-hero .in{position:relative;z-index:2;padding:calc(var(--gut) + 74px) var(--gut) calc(var(--gut) + 24px);min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;gap:18px}
 .static-hero h1{font-size:clamp(2.3rem,8.4vw,3.6rem);line-height:.99;letter-spacing:-.025em;text-shadow:var(--tshadow)}
@@ -403,7 +403,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 <!-- ============ HERÓI ESTÁTICO (celular e movimento reduzido) ============ -->
 <section class="static-hero" aria-label="Michely Modas">
-  <div class="ph" aria-hidden="true"></div>
+  <div class="ph" id="statph" aria-hidden="true"></div>
   <div class="vl" aria-hidden="true"></div>
   <div class="in">
     <p class="kicker" style="font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85">Guayaramerín</p>
@@ -489,7 +489,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     <div class="rv">
       <div class="place" style="grid-template-columns:1fr">
         <div class="ph" style="border-radius:16px;overflow:hidden;border:1px solid var(--line)">
-          <img src="assets/pecas/tranze-51266-mom-jeans.jpg" alt="Mom jean de mezclilla brasileña, vista de frente y de espalda" loading="lazy" width="900" height="849" style="aspect-ratio:1256/1185;object-fit:cover">
+          <img data-src="assets/pecas/tranze-51266-mom-jeans.jpg" alt="Mom jean de mezclilla brasileña, vista de frente y de espalda" loading="lazy" width="900" height="849" style="aspect-ratio:1256/1185;object-fit:cover">
         </div>
       </div>
     </div>
@@ -562,7 +562,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <div style="margin-top:28px"><a class="btn js-wa" href="#lista" data-msg="Hola, quiero preguntar algo sobre la tienda.">Escribir por WhatsApp</a></div>
     </div>
     <div class="ph rv">
-      <img src="assets/fachada.jpg" alt="Fachada de Michely Modas de noche, con las luces encendidas y los maniquíes en la vitrina" loading="lazy" width="1400" height="1750">
+      <img data-src="assets/fachada.jpg" alt="Fachada de Michely Modas de noche, con las luces encendidas y los maniquíes en la vitrina" loading="lazy" width="1400" height="1750">
     </div>
   </div>
 </section>
@@ -673,11 +673,34 @@ var FAQ = [
    "De Brasil. Trabajamos con marcas de f\u00e1brica como Tranze y Driton."]
 ];
 
+/* ============================================================
+   A BASE DOS ARQUIVOS
+   A pagina pode estar em um endereco sem barra no fim (a previa do
+   Claude e assim). Ai "assets/x.jpg" procura uma pasta acima do lugar
+   certo. Isto descobre sozinho e corrige, e nao atrapalha nada quando
+   o site estiver na hospedagem de verdade.
+   ============================================================ */
+var AP = (function(){
+  var path = location.pathname || "/";
+  if (/\/$/.test(path)) return "";                 // termina em barra: ja esta certo
+  if (/\.[a-z0-9]{2,5}$/i.test(path)) return "";   // termina em arquivo: ja esta certo
+  var last = path.split("/").pop();
+  return last ? last + "/" : "";
+})();
+function asset(rel){ return AP + rel; }
+
 var $  = function(s,r){return (r||document).querySelector(s)};
 var $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var clamp = function(v,lo,hi){return Math.min(hi,Math.max(lo,v))};
 var smoothstep = function(p,e0,e1){var t=clamp((p-e0)/(e1-e0),0,1);return t*t*(3-2*t)};
 function rng(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+
+/* ---------- liga as imagens estaticas na base certa ---------- */
+(function(){
+  $$("img[data-src]").forEach(function(im){ im.src = asset(im.getAttribute("data-src")); });
+  var sp = $("#statph");
+  if (sp) sp.style.backgroundImage = "url('" + asset("assets/hero-ending.jpg") + "')";
+})();
 
 /* ---------- WhatsApp ---------- */
 function waLink(msg){
@@ -712,7 +735,7 @@ $$(".js-wa").forEach(function(a){
     el.setAttribute("data-cat",p.c);
     el.innerHTML =
       tag+
-      '<div class="shot"><img src="assets/pecas/'+p.f+'" alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
+      '<div class="shot"><img src="'+asset("assets/pecas/"+p.f)+'" alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
       '<div class="meta">'+
         '<p class="nm">'+p.n+'</p>'+
         (sub?'<p class="br">'+sub+'</p>':'')+
@@ -871,9 +894,9 @@ var GATES=[
 ];
 var MQLS = GATES.map(function(q){return matchMedia(q)});
 
-var VIDEO_URL="assets/hero-scrub.mp4";
-var VIDEO_BYTES=4272218;
-var POSTER_URL="assets/hero-poster.jpg";
+var VIDEO_URL=asset("assets/hero-scrub.mp4");
+var VIDEO_BYTES=4008117;
+var POSTER_URL=asset("assets/hero-poster.jpg");
 
 var hero=$("#hero"), stage=$("#stage"), vid=$("#vid"), poster=$("#poster"), ring=$("#ring");
 var bands=$$(".hero .band").map(function(el){
@@ -935,7 +958,12 @@ vid.addEventListener("seeked",function(){
   seekBusy=false;
   if(pendingTime!==null){ var t=pendingTime; pendingTime=null; requestSeek(t); }
 });
-vid.addEventListener("error",function(){ seekBusy=false; pendingTime=null; failVideo(); });
+var videoStageFail=null;   // quem avisa o carregador atual que deu errado
+vid.addEventListener("error",function(){
+  seekBusy=false; pendingTime=null;
+  if(videoStageFail){ var f=videoStageFail; videoStageFail=null; f(new Error("media error")); }
+  else failVideo();
+});
 
 function updateCaptions(p){
   var now=performance.now();
@@ -1027,12 +1055,37 @@ function loadHeroBlob(){
   });
 }
 
+/* Plano B: se buscar o arquivo inteiro falhar (rede bloqueada, politica do
+   servidor), tenta o jeito simples, apontando o video direto para o arquivo.
+   So desiste depois que os dois falharem. */
+function loadHeroDirect(){
+  return new Promise(function(ok,fail){
+    var done=false;
+    videoStageFail=function(e){ if(done) return; done=true; videoStageFail=null; fail(e); };
+    vid.addEventListener("canplay",function(){
+      if(done) return; done=true; videoStageFail=null;
+      ring && ring.style.setProperty("--ld",0);
+      if(ring && ring.parentNode) ring.style.opacity="0";
+      requestSeek(heroProgress()*vid.duration);
+      stage.classList.add("video-ready");
+      ok();
+    },{once:true});
+    vid.preload="auto";
+    vid.src=VIDEO_URL;
+    vid.load();
+    setTimeout(function(){ if(!done){ done=true; videoStageFail=null; fail(new Error("timeout")); } },20000);
+  });
+}
+
 function initHeroOnce(){
   if(loadStarted) return;
   loadStarted=true; loadT0=performance.now();
   poster.style.backgroundImage="url('"+POSTER_URL+"')";
   var started=false;
-  function go(){ if(started) return; started=true; loadHeroBlob().catch(failVideo); }
+  function go(){
+    if(started) return; started=true;
+    loadHeroBlob().catch(loadHeroDirect).catch(failVideo);
+  }
   var im=new Image(); im.onload=go; im.onerror=go; im.src=POSTER_URL;
   setTimeout(go,4000);
 }
