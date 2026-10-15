@@ -23,13 +23,13 @@ Documento único do projeto. Guarda toda decisão tomada e é a fonte da verdade
 | Troca | Até uma semana depois da compra |
 | Chegada de mercadoria | Sem dia fixo |
 | Idioma do site | Espanhol com voseo (guardá, preguntá, tenés, entrás) |
-| WhatsApp | `[CONFIRMAR: número com código do país]` |
+| WhatsApp | +591 67820413 |
 | Instagram | `[CONFIRMAR: existe? qual?]` |
 | Logo | Não existe. A marca é tipográfica, desenhada neste projeto |
 
 ### Pendências que só o dono responde
 
-1. **Número do WhatsApp com código do país.** Sem ele o botão principal não existe e o site não pode ir ao ar.
+1. ~~Número do WhatsApp~~ **recebido: +591 67820413, ligado nos 37 botões.**
 2. Grade de tamanhos dos 11 vestidos, conjuntos e tops novos. Hoje o cartão mostra "Consultar tallas".
 3. Instagram, se existir.
 4. Autorização do fornecedor para usar as fotos de catálogo da Tranze e da Driton.
@@ -54,16 +54,16 @@ Tirada do mundo da filmagem: parede rosada da loja, azul do jeans, coral das pe�
 
 ```css
 :root{
-  --canvas:#F6EFEC;        /* parede da loja, off-white com viés rosado, nunca branco puro */
-  --canvas-deep:#EDE1DC;   /* faixas alternadas */
+  --canvas:#F8F2F2;        /* rosa muito claro e frio, quase branco */
+  --canvas-deep:#EDDFE0;   /* rosa empoeirado, das faixas alternadas */
   --panel:#FFFFFF;         /* cartões */
-  --ink:#17243B;           /* denim escuro, texto principal */
-  --ink-soft:#56667F;      /* texto secundário, 4,67:1 sobre o fundo */
-  --accent:#D8405C;        /* coral das peças: só o botão principal e o foco */
-  --accent-hover:#BE3450;
-  --accent-soft:#F7DCE2;
+  --ink:#1B2437;           /* azul-marinho profundo, do jeans */
+  --ink-soft:#525C6E;      /* texto secundário, 6,09:1 sobre o fundo */
+  --accent:#A83E55;        /* rosa vinho: só o botão principal e o foco */
+  --accent-hover:#8E3146;
+  --accent-soft:#F3DFE3;
   --denim:#2E4C7E;
-  --line:#DFD0CA;
+  --line:#E0CFD1;
 }
 ```
 
