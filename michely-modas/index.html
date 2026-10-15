@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Michely Modas · Ropa brasileña en Guayaramerín</title>
+<meta name="description" content="Ropa de Brasil que cruza el Mamoré cada semana. Jean, bermuda y básicos para mujer y hombre, del 36 al 46. Av. Federico Román, Guayaramerín.">
+<meta name="theme-color" content="#F6EFEC">
+
+<!-- DEPLOY STEP: cambiar las dos URL absolutas por el dominio real antes de publicar -->
+<meta property="og:title" content="Michely Modas · Ropa brasileña en Guayaramerín">
+<meta property="og:description" content="Ropa de Brasil que cruza el Mamoré cada semana. Del 36 al 46, en la Federico Román.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://PENDIENTE/">
+<meta property="og:image" content="https://PENDIENTE/assets/hero-ending.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317243B'/%3E%3Cpath d='M9 23V10l7 7 7-7v13' fill='none' stroke='%23F6EFEC' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --canvas:#F6EFEC;
+  --canvas-deep:#EDE1DC;
+  --panel:#FFFFFF;
+  --ink:#17243B;
+  --ink-soft:#56667F;
+  --accent:#D8405C;
+  --accent-hover:#BE3450;
+  --accent-soft:#F7DCE2;
+  --denim:#2E4C7E;
+  --line:#DFD0CA;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-soft:cubic-bezier(.33,.02,.2,1);
+  --tshadow:0 1px 2px rgba(6,10,20,.92),0 3px 12px rgba(6,10,20,.76),0 10px 44px rgba(6,10,20,.78);
+  --gut:clamp(16px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--body);font-size:clamp(16px,1.05vw,18px);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spacing:-.02em;margin:0}
+p{margin:0}
+
+/* ---------- ambiente fixo: uma só atmosfera atrás de tudo ---------- */
+.env{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.env::before{
+  content:"";position:absolute;inset:-20%;
+  background:
+    radial-gradient(60% 45% at 18% 12%,rgba(216,64,92,.07),transparent 60%),
+    radial-gradient(55% 45% at 85% 78%,rgba(46,76,126,.09),transparent 62%);
+  animation:drift 78s var(--ease-soft) infinite alternate;animation-delay:-22s;
+}
+@keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1.02)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--canvas);padding:12px 18px;z-index:200;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;gap:clamp(12px,2.4vw,34px);
+  padding:14px var(--gut);
+  background:transparent;color:#FBF7F4;
+  border-bottom:1px solid transparent;
+  transition:border-color .5s var(--ease),background .5s var(--ease),color .5s var(--ease),backdrop-filter .5s var(--ease);
+}
+.nav::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,12,22,.52),rgba(8,12,22,0));
+  transition:opacity .5s var(--ease);
+}
+.nav.solid::before{opacity:0}
+.nav.solid{background:rgba(246,239,236,.88);backdrop-filter:blur(14px);color:var(--ink);border-bottom-color:var(--line)}
+.nav .brand{font-family:var(--display);font-weight:800;font-size:1.02rem;letter-spacing:-.01em;margin-right:auto;white-space:nowrap;color:inherit;text-shadow:0 1px 10px rgba(6,10,20,.4)}
+.nav.solid .brand{text-shadow:none}
+.nav .brand span{color:var(--accent)}
+.nav .links{display:flex;gap:clamp(12px,1.9vw,26px)}
+.nav a.lk{font-size:.86rem;font-weight:500;color:rgba(251,247,244,.86);text-decoration:none;transition:color .3s var(--ease);text-shadow:0 1px 10px rgba(6,10,20,.4)}
+.nav a.lk:hover{color:#fff}
+.nav.solid a.lk{color:var(--ink-soft);text-shadow:none}
+.nav.solid a.lk:hover{color:var(--ink)}
+@media (max-width:860px){.nav .links{display:none}}
+@media (max-width:420px){
+  .nav{padding:12px 14px;gap:10px}
+  .nav .brand{font-size:.95rem}
+  .nav .btn{font-size:.78rem;padding:10px 13px}
+  .nav .btn svg{width:15px;height:15px}
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--accent);color:#fff;text-decoration:none;
+  font-family:var(--body);font-weight:600;font-size:.9rem;
+  padding:11px 20px;border-radius:999px;border:0;cursor:pointer;white-space:nowrap;
+  transition:background .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease);
+  box-shadow:0 2px 0 rgba(23,36,59,.08);
+}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(216,64,92,.26)}
+.btn svg{width:17px;height:17px;flex:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn.ghost:hover{background:var(--panel);border-color:var(--ink);box-shadow:none}
+@media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
+
+/* ---------- herói ---------- */
+.hero{position:relative;height:540vh;z-index:1}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#10182a}
+.stage .poster{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 1s var(--ease)}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--ease);will-change:transform;transform:translateZ(0)}
+.stage.video-ready video{opacity:1}
+.stage.video-ready .poster{opacity:0}
+.scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 125% 95% at 62% 45%,rgba(9,13,24,0) 34%,rgba(9,13,24,.46) 100%)}
+
+.ring{position:absolute;right:calc(var(--gut));bottom:calc(var(--gut) + 6px);width:42px;height:42px;color:rgba(255,255,255,.85);z-index:4;transform:rotate(-90deg)}
+.ring circle{transition:stroke-dashoffset .18s linear}
+.chev{position:absolute;right:calc(var(--gut));bottom:calc(var(--gut) + 6px);width:42px;height:42px;color:rgba(255,255,255,.8);z-index:4;animation:bob 2.6s var(--ease-soft) infinite;animation-delay:-.8s}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(7px);opacity:1}}
+
+.band{
+  position:absolute;z-index:3;pointer-events:none;opacity:0;
+  left:var(--gut);bottom:clamp(68px,13vh,132px);
+  width:min(52ch,60vw);
+  color:#FBF7F4;text-shadow:var(--tshadow);
+}
+.band::before{
+  content:"";position:absolute;inset:-70% -40% -90% -70%;pointer-events:none;z-index:-1;
+  opacity:calc(.3 + .7*var(--k,1));
+  background:radial-gradient(ellipse 72% 60% at 34% 58%,rgba(5,8,16,.70) 0%,rgba(5,8,16,.50) 44%,rgba(5,8,16,0) 76%);
+}
+.band .kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;opacity:.82;margin-bottom:12px}
+.band .line{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,6.1vw,4.5rem);line-height:.98;letter-spacing:-.025em}
+.band .sub{margin-top:16px;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.45;max-width:34ch;opacity:.94}
+.band .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.band .btn{text-shadow:none}
+
+/* banda 4: assenta no centro, porque o quadro final tem a arara embaixo */
+.band.settle{bottom:auto;top:clamp(84px,16vh,160px);width:min(46ch,64vw)}
+.band.settle::before{background:radial-gradient(ellipse 80% 72% at 36% 48%,rgba(5,8,16,.68) 0%,rgba(5,8,16,.46) 46%,rgba(5,8,16,0) 78%)}
+
+/* letras divididas */
+.w{display:inline-block;white-space:pre}
+.c{display:inline-block;will-change:transform,opacity}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* entrada a: deriva para baixo, por palavra */
+.e-drift .w{opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*-26px));
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1)}
+/* entrada b: tecelagem, caracteres alternando de cima e de baixo */
+.e-weave .c{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*var(--jy,0px)))}
+/* entrada c: soco na palavra, com passagem do ponto */
+.e-punch .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);
+  --ks:clamp(0,(var(--k,0) - var(--th,0) - var(--sd,.1))*var(--ss,3.2),1);
+  opacity:var(--kc);
+  transform:scale(calc(0.62 + (0.38 + var(--ov,.12))*var(--kc) - var(--ov,.12)*var(--ks)))}
+.e-punch .w.em{--ov:.24;--sd:.16;--ss:2.6}
+/* entrada d: subida palavra a palavra, depois a linha, depois o botão */
+.e-rise .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*22px))}
+.settle .sub{--ks:clamp(0,(var(--k,0) - .60)*3.4,1);opacity:var(--ks);transform:translateY(calc((1 - var(--ks))*14px))}
+.settle .cta{--kb:clamp(0,(var(--k,0) - .74)*4.2,1);opacity:var(--kb);transform:translateY(calc((1 - var(--kb))*16px))}
+
+/* herói estático: cinco portões */
+.static-hero{display:none;position:relative;z-index:1;min-height:92vh;background:#10182a;color:#FBF7F4;overflow:hidden}
+.static-hero .ph{position:absolute;inset:0;background:url("assets/hero-ending.jpg") center/cover}
+.static-hero .vl{position:absolute;inset:0;background:linear-gradient(185deg,rgba(6,10,20,.34) 0%,rgba(6,10,20,.56) 48%,rgba(6,10,20,.86) 100%)}
+.static-hero .in{position:relative;z-index:2;padding:calc(var(--gut) + 74px) var(--gut) calc(var(--gut) + 24px);min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;gap:18px}
+.static-hero h1{font-size:clamp(2.3rem,8.4vw,3.6rem);line-height:.99;letter-spacing:-.025em;text-shadow:var(--tshadow)}
+.static-hero p{font-size:1.06rem;max-width:30ch;text-shadow:var(--tshadow);opacity:.95}
+.static-hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+@media (max-width:720px),
+       (orientation:portrait) and (max-width:1024px),
+       (orientation:portrait) and (pointer:coarse),
+       (orientation:landscape) and (pointer:coarse) and (max-height:560px),
+       (prefers-reduced-motion:reduce){
+  .hero{display:none}
+  .static-hero{display:block}
+}
+@media (max-height:560px){.ring,.chev{display:none}}
+
+/* ---------- blocos ---------- */
+.sec{position:relative;z-index:1;padding:clamp(72px,11vh,136px) var(--gut)}
+.sec.tint{background:var(--canvas-deep)}
+.wrap{max-width:1240px;margin:0 auto}
+.kick{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.h2{font-size:clamp(1.9rem,4.4vw,3.1rem);max-width:17ch}
+.lede{margin-top:18px;font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--ink-soft);max-width:52ch}
+
+/* entrada ao rolar */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.stag>*{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.stag.in>*{opacity:1;transform:none}
+.stag.in>*:nth-child(1){transition-delay:.02s}
+.stag.in>*:nth-child(2){transition-delay:.09s}
+.stag.in>*:nth-child(3){transition-delay:.16s}
+.stag.in>*:nth-child(4){transition-delay:.23s}
+.stag.in>*:nth-child(5){transition-delay:.30s}
+.stag.in>*:nth-child(6){transition-delay:.37s}
+.stag.in>*:nth-child(7){transition-delay:.44s}
+.stag.in>*:nth-child(8){transition-delay:.51s}
+.stag.done>*,
+.stag.done>*:nth-child(1),.stag.done>*:nth-child(2),.stag.done>*:nth-child(3),.stag.done>*:nth-child(4),
+.stag.done>*:nth-child(5),.stag.done>*:nth-child(6),.stag.done>*:nth-child(7),.stag.done>*:nth-child(8){transition-delay:0s !important}
+
+/* ---------- vitrine ---------- */
+.gridhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,5vh,52px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:clamp(14px,2vw,26px)}
+.card{position:relative;background:var(--panel);border-radius:14px;overflow:hidden;border:1px solid var(--line);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(23,36,59,.1);border-color:#CDBAB3}
+.card .shot{position:relative;aspect-ratio:1256/1185;overflow:hidden;background:var(--canvas-deep)}
+.card .shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.card:hover .shot img{transform:scale(1.035)}
+.card .meta{padding:14px 16px 17px}
+.card .nm{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.012em}
+.card .br{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;color:var(--ink-soft);margin-top:5px;text-transform:uppercase}
+.card .tl{font-family:var(--mono);font-size:.78rem;color:var(--denim);margin-top:9px;letter-spacing:.02em}
+.card .ask{margin-top:13px;display:inline-flex;align-items:center;gap:7px;font-size:.84rem;font-weight:600;color:var(--accent);text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .3s var(--ease)}
+.card .ask:hover{border-bottom-color:var(--accent)}
+
+/* etiqueta de chegada: o elemento assinatura */
+.tag{position:absolute;top:0;right:15px;width:52px;height:80px;z-index:2;pointer-events:none;
+  transform-origin:12px 4px;animation:sway 6.5s var(--ease-soft) infinite;animation-delay:-2.1s}
+.tag:nth-of-type(2n){animation-duration:7.8s;animation-delay:-4.4s}
+@keyframes sway{0%,100%{transform:rotate(-2.6deg)}50%{transform:rotate(2.2deg)}}
+.tag .ttxt{font-family:var(--mono);font-size:7.4px;letter-spacing:.07em;fill:#FBF7F4}
+.tag .tnum{font-family:var(--mono);font-size:9.2px;font-weight:500;letter-spacing:.02em;fill:#FBF7F4}
+
+/* ---------- travessia desenhada ---------- */
+.river{position:relative;margin-top:clamp(34px,6vh,60px)}
+.river svg{width:100%;height:auto;display:block;overflow:visible}
+.river .rpath{fill:none;stroke:var(--denim);stroke-width:2.8;stroke-linecap:round;opacity:.62;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.river .rpath.drawn{stroke-dashoffset:0;transition:stroke-dashoffset 2s var(--ease-soft)}
+.river .dot{fill:var(--accent);opacity:0;
+  transform-box:fill-box;transform-origin:center;transform:scale(.3);
+  transition:opacity .55s var(--ease) var(--dd,0s),transform .55s var(--ease) var(--dd,0s)}
+.river.drawn .dot{opacity:1;transform:scale(1)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(20px,3.4vw,44px);margin-top:clamp(22px,4vh,38px)}
+.step .n{font-family:var(--mono);font-size:.76rem;color:var(--accent);letter-spacing:.16em;margin-bottom:9px}
+.step h3{font-size:1.28rem;letter-spacing:-.015em}
+.step p{margin-top:9px;color:var(--ink-soft);font-size:.98rem}
+
+/* ---------- marcas / tallas ---------- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,76px);align-items:center}
+@media (max-width:880px){.split{grid-template-columns:1fr}}
+.quote{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.1vw,2.3rem);line-height:1.14;letter-spacing:-.02em}
+.note{margin-top:20px;padding:16px 18px;background:var(--accent-soft);border-radius:12px;font-size:.95rem;color:#7A2334}
+.brands{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.brand-chip{font-family:var(--mono);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;color:var(--ink-soft);background:var(--panel)}
+
+.sizes{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.sz{font-family:var(--mono);font-size:1.02rem;width:50px;height:50px;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:11px;background:var(--panel);color:var(--denim);
+  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease)}
+.sz:hover{border-color:var(--denim);transform:translateY(-2px)}
+
+/* ---------- o momento interativo ---------- */
+.seal{display:grid;place-items:center;text-align:center;gap:22px}
+.sealbtn{position:relative;width:188px;height:188px;border-radius:50%;border:2px solid var(--line);background:var(--panel);cursor:pointer;display:grid;place-items:center;
+  transition:border-color .4s var(--ease),transform .4s var(--ease)}
+.sealbtn:hover{border-color:var(--accent)}
+.sealbtn:active{transform:scale(.985)}
+.sealbtn .arc{position:absolute;inset:-2px;transform:rotate(-90deg)}
+.sealbtn .arc circle{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:var(--c);stroke-dashoffset:calc(var(--c) - var(--c)*var(--p,0))}
+.sealbtn .lbl{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);max-width:11ch;line-height:1.45}
+.sealbtn.done .lbl{color:var(--accent)}
+.sealmsg{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.7vw,1.9rem);letter-spacing:-.018em;opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.sealmsg.on{opacity:1;transform:none}
+
+/* ---------- faq ---------- */
+.faq{max-width:860px;margin-top:clamp(28px,5vh,48px)}
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa button{width:100%;background:none;border:0;padding:22px 42px 22px 0;text-align:left;cursor:pointer;position:relative;
+  font-family:var(--display);font-weight:700;font-size:clamp(1.02rem,1.7vw,1.2rem);color:var(--ink);letter-spacing:-.012em}
+.qa button::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:translateY(-70%) rotate(45deg);transition:transform .42s var(--ease)}
+.qa.open button::after{transform:translateY(-20%) rotate(225deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.qa .ans p{padding:0 0 22px;color:var(--ink-soft);max-width:60ch}
+
+/* ---------- onde / lista ---------- */
+.place{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(26px,4.4vw,60px);align-items:center}
+@media (max-width:880px){.place{grid-template-columns:1fr}}
+.place .ph{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.place .ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.facts{display:grid;gap:18px;margin-top:26px}
+.fact .k{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.fact .v{font-size:1.04rem}
+
+.final{background:var(--ink);color:#FBF7F4;border-radius:20px;padding:clamp(34px,6vw,76px);text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 0%,rgba(216,64,92,.22),transparent 70%);pointer-events:none}
+.final>*{position:relative}
+.final h2{font-size:clamp(1.9rem,4.6vw,3rem);max-width:17ch;margin:0 auto}
+.final p{margin-top:20px;color:#C9CFDC;max-width:48ch;margin-left:auto;margin-right:auto}
+.final .btn{margin-top:30px;font-size:1rem;padding:15px 30px}
+.fine{margin-top:20px;font-family:var(--mono);font-size:.76rem;color:#8E9AB1;letter-spacing:.02em;max-width:46ch;margin-left:auto;margin-right:auto}
+
+footer{position:relative;z-index:1;padding:clamp(44px,7vh,84px) var(--gut);border-top:1px solid var(--line);background:var(--canvas-deep)}
+.fgrid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px}
+footer .bn{font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:-.016em;color:var(--ink)}
+footer .bn span{color:var(--accent)}
+footer p,footer a{color:var(--ink-soft);font-size:.92rem;text-decoration:none}
+footer a:hover{color:var(--ink)}
+.fhead{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:11px}
+
+/* ---------- movimento reduzido ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important;transition-delay:0s !important}
+  .rv,.stag>*{opacity:1 !important;transform:none !important}
+  .river .rpath{stroke-dashoffset:0 !important}
+  .river .dot{opacity:1 !important;transform:scale(1) !important}
+  .sealmsg{opacity:1 !important;transform:none !important}
+  .tag{transform:rotate(-1.2deg) !important}
+}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused !important}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="env" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <div class="brand">Michely <span>Modas</span></div>
+  <div class="links">
+    <a class="lk" href="#nuevo">Lo nuevo</a>
+    <a class="lk" href="#travesia">La travesía</a>
+    <a class="lk" href="#tallas">Tallas</a>
+    <a class="lk" href="#donde">Dónde estamos</a>
+  </div>
+  <a class="btn js-wa" href="#lista" data-msg="Hola, ya guardé el número. Quiero entrar a la lista de lo nuevo.">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .8 1.7 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5-.1 1.1Z"/></svg>
+    Guardar el número
+  </a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+<!-- ============ HERÓI COM ROLAGEM ============ -->
+<section class="hero" id="hero" aria-label="Michely Modas">
+  <div class="stage" id="stage">
+    <div class="poster" id="poster" aria-hidden="true"></div>
+    <video id="vid" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <svg class="ring" id="ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2.6" opacity=".22"/>
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2.6"
+              stroke-linecap="round" stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+    </svg>
+
+    <div class="band e-drift" data-a="0" data-b="0.17" data-first="1">
+      <p class="kicker">Guayaramerín</p>
+      <p class="line" data-split="word">Cada semana entra ropa nueva.</p>
+    </div>
+
+    <div class="band e-weave" data-a="0.22" data-b="0.42" data-spread=".5">
+      <p class="line" data-split="char">Cruzó el río desde Brasil.</p>
+    </div>
+
+    <div class="band e-punch" data-a="0.47" data-b="0.65">
+      <p class="line" data-split="word" data-em="0">Pocas piezas de cada talla.</p>
+    </div>
+
+    <div class="band settle e-rise" data-a="0.72" data-b="1" data-last="1" data-ramp="0.05">
+      <p class="line" data-split="word">Michely Modas</p>
+      <p class="sub">Ropa de Brasil, en la Federico Román. Del 36 al 46.</p>
+      <div class="cta">
+        <a class="btn js-wa" href="#lista" data-msg="Hola, ya guardé el número. Quiero entrar a la lista de lo nuevo.">Guardar el número</a>
+        <a class="btn ghost" href="#nuevo" style="color:#FBF7F4;border-color:rgba(251,247,244,.45)">Ver lo que hay</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERÓI ESTÁTICO (celular e movimento reduzido) ============ -->
+<section class="static-hero" aria-label="Michely Modas">
+  <div class="ph" aria-hidden="true"></div>
+  <div class="vl" aria-hidden="true"></div>
+  <div class="in">
+    <p class="kicker" style="font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85">Guayaramerín</p>
+    <h1>Ropa de Brasil,<br>recién llegada.</h1>
+    <p>Cada semana cruza el río algo nuevo. Pocas piezas de cada talla.</p>
+    <div class="cta">
+      <a class="btn js-wa" href="#lista" data-msg="Hola, ya guardé el número. Quiero entrar a la lista de lo nuevo.">Guardar el número</a>
+      <a class="btn ghost" href="#nuevo" style="color:#FBF7F4;border-color:rgba(251,247,244,.45)">Ver lo que hay</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VITRINE ============ -->
+<section class="sec" id="nuevo">
+  <div class="wrap">
+    <div class="gridhead rv">
+      <div>
+        <p class="kick">Recién llegado</p>
+        <h2 class="h2">Lo que hay ahora en la tienda</h2>
+        <p class="lede">Estas piezas están colgadas ahora mismo en la Federico Román. Cuando se acaban, se acaban: de cada modelo entran pocas por talla.</p>
+      </div>
+      <a class="btn ghost js-wa" href="#lista" data-msg="Hola, quiero saber qué hay disponible ahora.">Preguntar disponibilidad</a>
+    </div>
+
+    <div class="grid stag" id="grid"></div>
+  </div>
+</section>
+
+<!-- ============ A TRAVESSIA ============ -->
+<section class="sec tint" id="travesia">
+  <div class="wrap">
+    <p class="kick rv">La travesía</p>
+    <h2 class="h2 rv">De Brasil a la Federico Román</h2>
+    <p class="lede rv">Esa es toda la cadena. Sin intermediarios y sin vueltas.</p>
+
+    <div class="river" id="river" aria-hidden="true">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none" role="presentation">
+        <path class="rpath" id="rpath" d="M40,84 C200,84 236,30 400,30 C566,30 604,96 772,96 C936,96 972,42 1160,42"/>
+        <circle class="dot" cx="40" cy="84" r="7.5" style="--dd:.55s"/>
+        <circle class="dot" cx="600" cy="66" r="7.5" style="--dd:.95s"/>
+        <circle class="dot" cx="1160" cy="42" r="7.5" style="--dd:1.35s"/>
+      </svg>
+    </div>
+
+    <div class="steps stag">
+      <div class="step">
+        <p class="n">01</p>
+        <h3>Se elige allá</h3>
+        <p>La ropa se compra en Brasil, pieza por pieza. No viene en lote cerrado.</p>
+      </div>
+      <div class="step">
+        <p class="n">02</p>
+        <h3>Cruza el Mamoré</h3>
+        <p>Llega en bote, como llega todo acá. Son unos minutos de río.</p>
+      </div>
+      <div class="step">
+        <p class="n">03</p>
+        <h3>Entra a la tienda</h3>
+        <p>Se cuelga el mismo día. Por eso lo nuevo se nota apenas entrás.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE ROUPA BRASILEIRA ============ -->
+<section class="sec" id="marcas">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="kick">Por qué brasileña</p>
+      <p class="quote">Tela que aguanta el lavado, corte que cae bien y modelos que acá no se consiguen.</p>
+      <p class="lede">No es que sea de afuera: es que dura más puesta. Trabajamos con marcas de fábrica brasileña, no con imitación.</p>
+      <div class="brands">
+        <span class="brand-chip">Tranze Jeans</span>
+        <span class="brand-chip">Driton Jeans</span>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="place" style="grid-template-columns:1fr">
+        <div class="ph" style="border-radius:16px;overflow:hidden;border:1px solid var(--line)">
+          <img src="assets/pecas/tranze-51266-mom-jeans.jpg" alt="Mom jean de mezclilla brasileña, vista de frente y de espalda" loading="lazy" width="900" height="849" style="aspect-ratio:1256/1185;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALLAS ============ -->
+<section class="sec tint" id="tallas">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="kick">Tu talla</p>
+      <h2 class="h2">Tu talla, antes de venir</h2>
+      <p class="lede">Te pasamos la medida real de la pieza por WhatsApp: cintura, cadera y largo en centímetros. Así no venís a probarte algo que no te va a entrar.</p>
+      <div class="note">Las tallas brasileñas corren distinto a las de acá. Preguntá siempre antes de venir.</div>
+      <div style="margin-top:28px"><a class="btn js-wa" href="#lista" data-msg="Hola, quiero las medidas de una pieza. ¿Me podés pasar cintura, cadera y largo?">Pedir medidas</a></div>
+    </div>
+    <div class="rv">
+      <p class="kick">Lo que manejamos</p>
+      <div class="sizes">
+        <div class="sz">36</div><div class="sz">38</div><div class="sz">40</div>
+        <div class="sz">42</div><div class="sz">44</div><div class="sz">46</div>
+      </div>
+      <p class="lede" style="margin-top:22px">No todas las piezas llegan en todas las tallas, y de cada modelo entran pocas. Por eso conviene preguntar antes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O MOMENTO INTERATIVO ============ -->
+<section class="sec" id="sello">
+  <div class="wrap seal">
+    <p class="kick rv">El sello</p>
+    <h2 class="h2 rv" style="text-align:center;max-width:20ch">Mantené apretado el sello</h2>
+    <button class="sealbtn rv" id="sealbtn" aria-label="Mantené apretado para sellar la llegada">
+      <svg class="arc" viewBox="0 0 196 196" aria-hidden="true"><circle cx="98" cy="98" r="92" style="--c:578"/></svg>
+      <span class="lbl" id="seallbl">Mantené apretado</span>
+    </button>
+    <p class="sealmsg" id="sealmsg">Listo. Esto entró esta semana.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec tint" id="faq">
+  <div class="wrap">
+    <p class="kick rv">Preguntas</p>
+    <h2 class="h2 rv">Lo que más nos preguntan</h2>
+    <div class="faq stag" id="faqlist"></div>
+  </div>
+</section>
+
+<!-- ============ ONDE ESTAMOS ============ -->
+<section class="sec" id="donde">
+  <div class="wrap place">
+    <div class="rv">
+      <p class="kick">Dónde estamos</p>
+      <h2 class="h2">En la Federico Román, entre la 25 de Mayo y la Sucre</h2>
+      <div class="facts">
+        <div class="fact">
+          <p class="k">Dirección</p>
+          <p class="v">Av. Federico Román, entre Av. 25 de Mayo y C. Sucre.<br>Guayaramerín, Beni.</p>
+        </div>
+        <div class="fact">
+          <p class="k">Horario</p>
+          <p class="v">Lunes a sábado de 8:30 a 19:30.<br>Domingos y feriados de 9:00 a 13:00.</p>
+        </div>
+      </div>
+      <div style="margin-top:28px"><a class="btn js-wa" href="#lista" data-msg="Hola, quiero preguntar algo sobre la tienda.">Escribir por WhatsApp</a></div>
+    </div>
+    <div class="ph rv">
+      <img src="assets/fachada.jpg" alt="Fachada de Michely Modas de noche, con las luces encendidas y los maniquíes en la vitrina" loading="lazy" width="1400" height="1750">
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAMADA FINAL ============ -->
+<section class="sec" id="lista">
+  <div class="wrap">
+    <div class="final rv">
+      <h2>Enterate antes que el resto</h2>
+      <p>Guardá el número de Michely Modas y te mandamos las fotos de lo que llega, apenas llega. Sin spam y sin grupos: un mensaje por semana.</p>
+      <a class="btn js-wa" href="#" data-msg="Hola, ya guardé el número. Quiero entrar a la lista de lo nuevo.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .8 1.7 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5-.1 1.1Z"/></svg>
+        Guardar el número y entrar a la lista
+      </a>
+      <p class="fine">Solo funciona si tenés el número guardado en tus contactos. Es así en WhatsApp para todos.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <p class="bn">Michely <span>Modas</span></p>
+      <p style="margin-top:10px">Ropa brasileña en Guayaramerín, Beni.</p>
+    </div>
+    <div>
+      <p class="fhead">Dirección</p>
+      <p>Av. Federico Román, entre Av. 25 de Mayo y C. Sucre.</p>
+    </div>
+    <div>
+      <p class="fhead">Horario</p>
+      <p>Lunes a sábado 8:30 a 19:30<br>Domingos y feriados 9:00 a 13:00</p>
+    </div>
+    <div>
+      <p class="fhead">Contacto</p>
+      <p><a class="js-wa" href="#" data-msg="Hola, quiero preguntar algo.">Escribir por WhatsApp</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   DEPLOY STEP: poner acá el número de WhatsApp real, con código
+   de país y sin espacios ni signos. Ejemplo Bolivia: 59171234567
+   Mientras diga PENDIENTE, los botones no abren WhatsApp.
+   ============================================================ */
+var WHATSAPP = "PENDIENTE";
+
+/* ---------- piezas ---------- */
+var PIEZAS = [
+  {f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46"},
+  {f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46"},
+  {f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46"},
+  {f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46"},
+  {f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46"},
+  {f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46"},
+  {f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46"},
+  {f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46"},
+  {f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44"},
+  {f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46"},
+  {f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46"},
+  {f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46"},
+  {f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46"},
+  {f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46"},
+  {f:"masculino-polo-preta.jpg",       n:"Polo negra",         m:"Driton", r:"",      t:""},
+  {f:"masculino-camisa-azul.jpg",      n:"Camisa celeste",     m:"Driton", r:"",      t:""}
+];
+
+var FAQ = [
+  ["¿La ropa es igual a la foto?",
+   "Las fotos son de las piezas que están colgadas en la tienda. Si una se acaba, te avisamos antes de que vengas."],
+  ["¿De dónde viene la ropa?",
+   "De Brasil. Cruza el Mamoré en bote y se cuelga el mismo día en la tienda."],
+  ["¿Y si no me queda la talla?",
+   "PENDIENTE: acá va la política de cambio real de la tienda."],
+  ["¿En cuánto responden por WhatsApp?",
+   "PENDIENTE: acá va el compromiso real de tiempo de respuesta."],
+  ["¿Qué formas de pago aceptan?",
+   "PENDIENTE: acá van las formas de pago reales."],
+  ["¿Hacen envíos?",
+   "PENDIENTE: acá va si hacen envíos y a dónde."]
+];
+
+var $  = function(s,r){return (r||document).querySelector(s)};
+var $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var clamp = function(v,lo,hi){return Math.min(hi,Math.max(lo,v))};
+var smoothstep = function(p,e0,e1){var t=clamp((p-e0)/(e1-e0),0,1);return t*t*(3-2*t)};
+function rng(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+
+/* ---------- WhatsApp ---------- */
+function waLink(msg){
+  if(WHATSAPP==="PENDIENTE") return null;
+  return "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+}
+$$(".js-wa").forEach(function(a){
+  var href = waLink(a.getAttribute("data-msg")||"Hola");
+  if(href){ a.href=href; a.target="_blank"; a.rel="noopener"; }
+});
+
+/* ---------- vitrine ---------- */
+(function(){
+  var g = $("#grid"); if(!g) return;
+  PIEZAS.forEach(function(p,i){
+    var msg = "Hola, me interesa "+p.n+(p.r?" (ref "+p.r+")":"")+". ¿La tenés disponible?";
+    var href = waLink(msg);
+    var tag = p.r
+      ? '<svg class="tag" viewBox="0 0 52 80" aria-hidden="true">'
+        +'<path d="M12 4 L44 14 L44 66 L12 76 Z" fill="#17243B" opacity=".93"/>'
+        +'<circle cx="18" cy="16" r="2.6" fill="none" stroke="#F6EFEC" stroke-width="1.3"/>'
+        +'<path d="M12 4 C6 8 4 2 2 6" fill="none" stroke="#17243B" stroke-width="1.4" stroke-linecap="round"/>'
+        +'<text class="ttxt" x="20" y="36">REF</text>'
+        +'<text class="tnum" x="20" y="48">'+p.r+'</text>'
+        +'</svg>'
+      : '';
+    var el = document.createElement("article");
+    el.className="card";
+    el.innerHTML =
+      tag+
+      '<div class="shot"><img src="assets/pecas/'+p.f+'" alt="'+p.n+' de Michely Modas" loading="lazy" decoding="async"></div>'+
+      '<div class="meta">'+
+        '<p class="nm">'+p.n+'</p>'+
+        '<p class="br">'+p.m+(p.r?' · Ref '+p.r:'')+'</p>'+
+        (p.t?'<p class="tl">Tallas '+p.t+'</p>':'')+
+        '<a class="ask"'+(href?' href="'+href+'" target="_blank" rel="noopener"':' href="#lista"')+'>Preguntar por esta &rarr;</a>'+
+      '</div>';
+    g.appendChild(el);
+  });
+})();
+
+/* ---------- faq ---------- */
+(function(){
+  var l = $("#faqlist"); if(!l) return;
+  FAQ.forEach(function(qa,i){
+    var d=document.createElement("div"); d.className="qa";
+    d.innerHTML='<button type="button" aria-expanded="false" id="q'+i+'">'+qa[0]+'</button>'+
+                '<div class="ans" role="region" aria-labelledby="q'+i+'"><p>'+qa[1]+'</p></div>';
+    var b=d.querySelector("button"), a=d.querySelector(".ans");
+    b.addEventListener("click",function(){
+      var open=d.classList.toggle("open");
+      b.setAttribute("aria-expanded",open?"true":"false");
+      a.style.maxHeight = open ? a.scrollHeight+"px" : "0px";
+    });
+    l.appendChild(d);
+  });
+})();
+
+/* ---------- nav: transparente sobre o herói, sólida depois ---------- */
+(function(){
+  var nav=$("#nav"), was=null;
+  var heroEl=$(".hero"), statEl=$(".static-hero");
+  function mark(){
+    var el = (heroEl && getComputedStyle(heroEl).display!=="none") ? heroEl : statEl;
+    if(!el) return 120;
+    return el.offsetTop + el.offsetHeight - 110;
+  }
+  function upd(){
+    var on = scrollY > mark();
+    if(on!==was){ was=on; nav.classList.toggle("solid",on); }
+  }
+  addEventListener("scroll",upd,{passive:true});
+  addEventListener("resize",function(){was=null;upd()},{passive:true});
+  upd();
+})();
+
+/* ---------- entradas ao rolar ---------- */
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+      if(e.target.classList.contains("stag")){
+        setTimeout(function(){e.target.classList.add("done")},1200);
+      }
+    });
+  },{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+  $$(".rv,.stag").forEach(function(el){io.observe(el)});
+})();
+
+/* ---------- traçado do rio ---------- */
+(function(){
+  var r=$("#river"); if(!r) return;
+  var p=$("#rpath",r);
+  var len=p.getTotalLength();
+  p.style.setProperty("--len",len);
+  new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      p.classList.add("drawn"); r.classList.add("drawn"); o.unobserve(e.target);
+    });
+  },{threshold:.3}).observe(r);
+})();
+
+/* ---------- o selo: segurar apertado ---------- */
+(function(){
+  var b=$("#sealbtn"), lbl=$("#seallbl"), msg=$("#sealmsg");
+  if(!b) return;
+  var p=0, holding=false, raf=null, last=0, done=false;
+  var reduce = matchMedia("(prefers-reduced-motion:reduce)");
+  function finish(){
+    if(done) return; done=true;
+    b.classList.add("done"); lbl.textContent="Sellado"; msg.classList.add("on");
+    var cards=$$("#grid .card").slice(0,8);
+    cards.forEach(function(c,i){
+      setTimeout(function(){
+        c.style.transition="box-shadow .6s var(--ease),border-color .6s var(--ease)";
+        c.style.boxShadow="0 14px 34px rgba(216,64,92,.18)";
+        c.style.borderColor="var(--accent)";
+      }, i*90);
+    });
+  }
+  function tick(now){
+    var dt=Math.min(80,now-(last||now)); last=now;
+    p += (holding? dt/1150 : -dt/900);
+    p = clamp(p,0,1);
+    b.style.setProperty("--p",p.toFixed(3));
+    if(p>=1){ finish(); raf=null; last=0; return; }
+    if(p<=0 && !holding){ raf=null; last=0; return; }
+    raf=requestAnimationFrame(tick);
+  }
+  function start(e){ if(done) return; e.preventDefault(); holding=true; if(raf===null) raf=requestAnimationFrame(tick); }
+  function stop(){ holding=false; if(raf===null && p>0) raf=requestAnimationFrame(tick); }
+  b.addEventListener("pointerdown",start);
+  addEventListener("pointerup",stop); addEventListener("pointercancel",stop);
+  b.addEventListener("keydown",function(e){ if(e.key===" "||e.key==="Enter"){e.preventDefault();start(e);} });
+  b.addEventListener("keyup",stop);
+  function applyReduce(){
+    if(reduce.matches){ p=1; b.style.setProperty("--p","1"); finish(); }
+  }
+  reduce.addEventListener("change",applyReduce);
+  applyReduce();
+})();
+
+/* ============================================================
+   O HERÓI COM ROLAGEM
+   ============================================================ */
+var GATES=[
+  "(max-width: 720px)",
+  "(orientation: portrait) and (max-width: 1024px)",
+  "(orientation: portrait) and (pointer: coarse)",
+  "(orientation: landscape) and (pointer: coarse) and (max-height: 560px)",
+  "(prefers-reduced-motion: reduce)"
+];
+var MQLS = GATES.map(function(q){return matchMedia(q)});
+
+var VIDEO_URL="assets/hero-scrub.mp4";
+var VIDEO_BYTES=4272218;
+var POSTER_URL="assets/hero-poster.jpg";
+
+var hero=$("#hero"), stage=$("#stage"), vid=$("#vid"), poster=$("#poster"), ring=$("#ring");
+var bands=$$(".hero .band").map(function(el){
+  return {el:el, a:parseFloat(el.dataset.a), b:parseFloat(el.dataset.b),
+          first:el.dataset.first==="1", last:el.dataset.last==="1",
+          ramp:el.dataset.ramp?parseFloat(el.dataset.ramp):0,
+          op:-1, k:-1};
+});
+
+/* dividir o texto em palavras e caracteres, uma vez só */
+(function splitAll(){
+  var rand=rng(20261015);
+  bands.forEach(function(b,bi){
+    $$("[data-split]",b.el).forEach(function(node){
+      var mode=node.dataset.split, text=node.textContent, words=text.split(" ");
+      var emIdx = node.dataset.em!==undefined ? parseInt(node.dataset.em,10) : -1;
+      var spread = b.el.dataset.spread? parseFloat(b.el.dataset.spread) : .5;
+      node.textContent="";
+      var sr=document.createElement("span"); sr.className="sr"; sr.textContent=text; node.appendChild(sr);
+      var vis=document.createElement("span"); vis.setAttribute("aria-hidden","true"); node.appendChild(vis);
+      var total=text.replace(/ /g,"").length, ci=0;
+      words.forEach(function(w,wi){
+        var ws=document.createElement("span"); ws.className="w"+(wi===emIdx?" em":"");
+        ws.style.setProperty("--th",(wi/Math.max(1,words.length)*spread).toFixed(3));
+        if(mode==="char"){
+          for(var i=0;i<w.length;i++){
+            var cs=document.createElement("span"); cs.className="c"; cs.textContent=w[i];
+            cs.style.setProperty("--th",(ci/Math.max(1,total)*spread + rand()*.05).toFixed(3));
+            cs.style.setProperty("--jy",((ci%2?1:-1)*(16+rand()*16)).toFixed(1)+"px");
+            ws.appendChild(cs); ci++;
+          }
+        } else { ws.textContent=w; }
+        vis.appendChild(ws);
+        if(wi<words.length-1) vis.appendChild(document.createTextNode(" "));
+      });
+    });
+  });
+})();
+
+var target=0, shown=0, rafId=null, lastTick=0, heroOn=false;
+var seekBusy=false, pendingTime=null;
+var scrubOn=false, loadStarted=false, loadK=0, loadT0=0;
+
+function heroProgress(){
+  if(!hero) return 0;
+  var r=hero.getBoundingClientRect();
+  var total=hero.offsetHeight-innerHeight;
+  if(total<=0) return 0;
+  return clamp(-r.top/total,0,1);
+}
+
+function requestSeek(t){
+  if(!vid.duration || isNaN(t)) return;
+  if(seekBusy){ pendingTime=t; return; }
+  seekBusy=true;
+  try{ vid.currentTime=t; }catch(e){ seekBusy=false; }
+}
+vid.addEventListener("seeked",function(){
+  seekBusy=false;
+  if(pendingTime!==null){ var t=pendingTime; pendingTime=null; requestSeek(t); }
+});
+vid.addEventListener("error",function(){ seekBusy=false; pendingTime=null; failVideo(); });
+
+function updateCaptions(p){
+  var now=performance.now();
+  if(loadStarted && loadK<1){
+    loadK = clamp((now-loadT0)/900,0,1);
+    if(loadK<1 && rafId===null) rafId=requestAnimationFrame(tick);
+  }
+  bands.forEach(function(b){
+    var f=Math.min(.02,(b.b-b.a)/3);
+    var inOp  = b.first?1:smoothstep(p,b.a,b.a+f);
+    var outOp = b.last?0:smoothstep(p,b.b-f,b.b);
+    var op=inOp*(1-outOp);
+    var ramp = b.ramp || Math.min(.025,(b.b-b.a)*.35);
+    var k=clamp((p-b.a)/ramp,0,1);
+    if(b.first) k=Math.max(k,loadK);
+    if(Math.abs(op-b.op)>.004){ b.op=op; b.el.style.opacity=op.toFixed(3); }
+    if(Math.abs(k-b.k)>.008){ b.k=k; b.el.style.setProperty("--k",k.toFixed(3)); }
+  });
+}
+
+function tick(now){
+  var dt=Math.min(100, now-(lastTick||now));
+  lastTick=now;
+  var kk=0.16;
+  shown += (target-shown)*(1-Math.pow(1-kk, dt/16.667));
+  var settled = Math.abs(target-shown)<0.0005;
+  if(settled){ shown=target; }
+  if(vid.duration) requestSeek(shown*vid.duration);
+  updateCaptions(shown);
+  if(settled && (!loadStarted || loadK>=1)){ rafId=null; lastTick=0; return; }
+  rafId=requestAnimationFrame(tick);
+}
+
+function onScroll(){
+  target=heroProgress();
+  if(rafId===null && heroOn) rafId=requestAnimationFrame(tick);
+}
+
+if(hero){
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      heroOn=e.isIntersecting;
+      if(heroOn && scrubOn && rafId===null) rafId=requestAnimationFrame(tick);
+    });
+  },{threshold:0}).observe(hero);
+}
+
+function failVideo(){
+  if(ring && ring.parentNode){
+    var c=document.createElement("div"); c.className="chev";
+    c.innerHTML='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20l8 8 8-8"/></svg>';
+    ring.replaceWith(c);
+  }
+  stage.classList.add("video-failed");
+}
+
+function loadHeroBlob(){
+  var ctrl=new AbortController();
+  var watchdog=setTimeout(function(){ctrl.abort()},20000);
+  return fetch(VIDEO_URL,{signal:ctrl.signal}).then(function(res){
+    if(!res.ok || !res.body) throw new Error("no body");
+    var total=Number(res.headers.get("Content-Length"))||VIDEO_BYTES;
+    var reader=res.body.getReader(), chunks=[], got=0, lastRing=0;
+    function pump(){
+      return reader.read().then(function(r){
+        if(r.done) return;
+        clearTimeout(watchdog);
+        watchdog=setTimeout(function(){ctrl.abort()},20000);
+        chunks.push(r.value); got+=r.value.length;
+        var frac=Math.min(1,got/total), now=performance.now();
+        if(now-lastRing>100 || frac===1){
+          lastRing=now;
+          ring && ring.style.setProperty("--ld", Math.round(126*(1-frac)));
+        }
+        return pump();
+      });
+    }
+    return pump().then(function(){
+      clearTimeout(watchdog);
+      ring && ring.style.setProperty("--ld",0);
+      vid.src=URL.createObjectURL(new Blob(chunks,{type:"video/mp4"}));
+      vid.load();
+      vid.addEventListener("canplay",function(){
+        if(ring && ring.parentNode) ring.style.opacity="0";
+        requestSeek(heroProgress()*vid.duration);
+        stage.classList.add("video-ready");
+      },{once:true});
+    });
+  });
+}
+
+function initHeroOnce(){
+  if(loadStarted) return;
+  loadStarted=true; loadT0=performance.now();
+  poster.style.backgroundImage="url('"+POSTER_URL+"')";
+  var started=false;
+  function go(){ if(started) return; started=true; loadHeroBlob().catch(failVideo); }
+  var im=new Image(); im.onload=go; im.onerror=go; im.src=POSTER_URL;
+  setTimeout(go,4000);
+}
+
+function enableScrub(){
+  if(scrubOn) return; scrubOn=true;
+  initHeroOnce();
+  addEventListener("scroll",onScroll,{passive:true});
+  bands.forEach(function(b){b.op=-1;b.k=-1});
+  updateCaptions(heroProgress());
+  onScroll();
+}
+function disableScrub(){
+  if(!scrubOn) return; scrubOn=false;
+  removeEventListener("scroll",onScroll);
+  if(rafId!==null){ cancelAnimationFrame(rafId); rafId=null; }
+}
+function applyHeroMode(){
+  if(MQLS.some(function(m){return m.matches})) disableScrub();
+  else enableScrub();
+}
+MQLS.forEach(function(m){m.addEventListener("change",applyHeroMode)});
+applyHeroMode();
+
+/* ---------- pausar animações em aba oculta ---------- */
+document.addEventListener("visibilitychange",function(){
+  document.body.classList.toggle("paused",document.hidden);
+});
+
+})();
+</script>
+</body>
+</html>
