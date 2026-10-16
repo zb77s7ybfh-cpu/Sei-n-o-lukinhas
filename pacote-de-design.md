@@ -30,11 +30,15 @@ Documento único do projeto. Guarda toda decisão tomada e é a fonte da verdade
 ### Pendências que só o dono responde
 
 1. ~~Número do WhatsApp~~ **recebido: +591 67820413, ligado nos 37 botões.**
-2. Grade de tamanhos. ~~Vestidos~~ **recebido: P, M, G nos oito vestidos.**
-   Faltam cinco peças, que ainda mostram "Consultar tallas": conjunto blanco,
-   conjunto verde, top blanco con pedrería, polo negra e camisa celeste.
-3. Instagram, se existir.
-4. Autorização do fornecedor para usar as fotos de catálogo da Tranze e da Driton.
+2. ~~Grade de tamanhos~~ **resolvido: P, M, G nos oito vestidos.** As cinco
+   peças restantes (conjunto blanco, conjunto verde, top blanco con pedrería,
+   polo negra, camisa celeste) ficam com "Consultar tallas" — decisão do dono.
+3. Instagram: **@michely_modasbo**, conta ainda por criar. Ligar no site
+   assim que existir.
+4. ~~Autorização do fornecedor~~ **confirmada pelo dono** para as fotos de
+   catálogo da Tranze e da Driton.
+5. ~~Cartão de compartilhamento (og:)~~ **resolvido:** aponta para
+   https://michelymodas.netlify.app/ e assets/og.jpg, em 1200x630.
 
 ---
 
