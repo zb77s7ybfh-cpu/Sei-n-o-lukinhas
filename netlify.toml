@@ -1,0 +1,8 @@
+# O site mora em michely-modas/, nao na raiz do repositorio.
+# Sem isto a Netlify publica a raiz, que nao tem index.html, e o endereco
+# principal responde 404 -- o site so aparecia em /michely-modas/.
+# Este arquivo vale mais que a configuracao do painel, entao a pasta certa
+# fica registrada aqui e nao se perde.
+
+[build]
+  publish = "michely-modas"
