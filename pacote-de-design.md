@@ -33,8 +33,8 @@ Documento único do projeto. Guarda toda decisão tomada e é a fonte da verdade
 2. ~~Grade de tamanhos~~ **resolvido: P, M, G nos oito vestidos.** As cinco
    peças restantes (conjunto blanco, conjunto verde, top blanco con pedrería,
    polo negra, camisa celeste) ficam com "Consultar tallas" — decisão do dono.
-3. Instagram: **@michely_modasbo**, conta ainda por criar. Ligar no site
-   assim que existir.
+3. ~~Instagram~~ **resolvido: @michely_modasbo**, ligado no rodapé e na
+   seção "Dónde estamos". Conta conferida: responde como perfil existente.
 4. ~~Autorização do fornecedor~~ **confirmada pelo dono** para as fotos de
    catálogo da Tranze e da Driton.
 5. ~~Cartão de compartilhamento (og:)~~ **resolvido:** aponta para
