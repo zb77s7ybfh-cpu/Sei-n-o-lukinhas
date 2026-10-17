@@ -258,6 +258,100 @@ p{margin:0}
 .card .ask{margin-top:13px;display:inline-flex;align-items:center;gap:7px;font-size:.84rem;font-weight:600;color:var(--accent);text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .3s var(--ease)}
 .card .ask:hover{border-bottom-color:var(--accent)}
 
+/* ---------- carrinho ---------- */
+.card .pr{font-family:var(--body);font-weight:700;font-size:1.02rem;color:var(--ink);margin-top:10px}
+.card .pr small{font-family:var(--mono);font-weight:400;font-size:.7rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:4px}
+.card .pr.ask-pr{font-weight:600;font-size:.86rem;color:var(--ink-soft)}
+.tallas{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tch{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;padding:7px 11px;min-height:34px;
+  border:1.5px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink-soft);
+  cursor:pointer;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+.tch:hover{border-color:var(--ink);color:var(--ink)}
+.tch.on{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (pointer:coarse){.tch{min-height:42px;padding:9px 13px}}
+.addbtn{margin-top:13px;width:100%;min-height:44px;border:0;border-radius:999px;cursor:pointer;
+  font-family:var(--body);font-weight:600;font-size:.9rem;background:var(--accent);color:#fff;
+  transition:background .3s var(--ease),transform .2s var(--ease)}
+.addbtn:hover{background:var(--accent-hover)}
+.addbtn:active{transform:scale(.985)}
+.addbtn.done{background:#3F6B4F}
+.addbtn.warn{background:var(--panel);color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+
+.cartbtn{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vh,28px);z-index:60;
+  display:none;align-items:center;gap:10px;min-height:52px;padding:0 20px;border:0;border-radius:999px;
+  cursor:pointer;font-family:var(--body);font-weight:600;font-size:.92rem;background:var(--ink);color:var(--canvas);
+  box-shadow:0 14px 34px rgba(23,36,59,.26);transition:transform .25s var(--ease),background .3s var(--ease)}
+.cartbtn.on{display:inline-flex}
+.cartbtn:hover{transform:translateY(-2px)}
+.cartbtn svg{width:19px;height:19px;flex:none}
+.cartbtn .qt{font-family:var(--mono);font-size:.76rem;background:var(--rose-light);color:#3E3238;
+  border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+
+.sheetbg{position:fixed;inset:0;z-index:70;background:rgba(38,30,34,.52);opacity:0;pointer-events:none;
+  transition:opacity .34s var(--ease)}
+.sheetbg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:71;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--canvas);
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s var(--ease);
+  box-shadow:-18px 0 46px rgba(23,36,59,.16)}
+.sheet.on{transform:none}
+@media (max-width:560px){
+  .sheet{top:auto;width:100%;max-height:92vh;border-radius:18px 18px 0 0;transform:translateY(100%)}
+}
+.shead{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:20px clamp(18px,4vw,26px);border-bottom:1px solid var(--line)}
+.shead h3{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--ink)}
+.sclose{border:0;background:none;cursor:pointer;color:var(--ink-soft);font-size:1.5rem;line-height:1;
+  min-width:44px;min-height:44px;border-radius:50%}
+.sclose:hover{color:var(--ink);background:var(--canvas-deep)}
+.sbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px)}
+.sfoot{border-top:1px solid var(--line);padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px);background:var(--panel)}
+
+.ci{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci:last-child{border-bottom:0}
+.ci img{width:62px;height:62px;border-radius:10px;object-fit:cover;flex:none;background:var(--canvas-deep)}
+.ci .cin{font-weight:600;font-size:.92rem;color:var(--ink);line-height:1.3}
+.ci .cit{font-family:var(--mono);font-size:.71rem;letter-spacing:.07em;color:var(--ink-soft);margin-top:4px;text-transform:uppercase}
+.ci .cip{font-weight:700;font-size:.92rem;color:var(--ink);margin-top:6px}
+.ci .cip.q{font-weight:600;font-size:.82rem;color:var(--ink-soft)}
+.qbox{display:flex;align-items:center;gap:2px;margin-top:8px}
+.qbox button{width:30px;height:30px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);
+  cursor:pointer;font-size:1rem;line-height:1;border-radius:8px}
+.qbox button:hover{border-color:var(--ink)}
+.qbox span{font-family:var(--mono);font-size:.84rem;min-width:30px;text-align:center}
+.cidel{margin-left:auto;align-self:flex-start;border:0;background:none;cursor:pointer;
+  font-size:.76rem;color:var(--ink-soft);text-decoration:underline;padding:4px}
+.cidel:hover{color:var(--accent)}
+
+.tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.tot .tl2{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.tot .tv{font-family:var(--display);font-size:1.6rem;color:var(--ink)}
+.nota{font-size:.8rem;color:var(--ink-soft);line-height:1.5;margin-top:8px}
+.sbtn{margin-top:14px;width:100%;min-height:52px;border:0;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--body);font-weight:600;font-size:.98rem;background:var(--accent);color:#fff;
+  transition:background .3s var(--ease)}
+.sbtn:hover{background:var(--accent-hover)}
+.sbtn:disabled{opacity:.45;cursor:not-allowed}
+.sbtn.wa{background:#1F7A4D}
+.sbtn.wa:hover{background:#19653f}
+.sbtn svg{width:19px;height:19px;flex:none}
+.sghost{margin-top:10px;width:100%;min-height:46px;border:1.5px solid var(--line);background:var(--panel);
+  border-radius:999px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:.88rem;color:var(--ink-soft)}
+.sghost:hover{border-color:var(--ink);color:var(--ink)}
+.vazio{text-align:center;padding:48px 10px;color:var(--ink-soft)}
+.vazio p{margin-top:10px;font-size:.92rem}
+
+.paso{display:flex;gap:12px;padding:13px 0}
+.paso .num{flex:none;width:25px;height:25px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  font-family:var(--mono);font-size:.76rem;display:flex;align-items:center;justify-content:center;font-weight:500}
+.paso .tx{font-size:.9rem;line-height:1.55;color:var(--ink)}
+.paso .tx b{font-weight:700}
+.qrbox{text-align:center;margin:6px 0 4px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.qrbox img{width:min(230px,70%);height:auto;border-radius:8px}
+.qrbox p{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:11px;text-transform:uppercase}
+.aviso{margin-top:14px;padding:13px 15px;background:var(--accent-soft);border-radius:11px;
+  font-size:.84rem;line-height:1.55;color:#5A3F46}
+
 /* etiqueta de chegada: o elemento assinatura */
 .tag{position:absolute;top:0;right:15px;width:52px;height:80px;z-index:2;pointer-events:none;
   transform-origin:12px 4px;animation:sway 6.5s var(--ease-soft) infinite;animation-delay:-2.1s}
@@ -631,6 +725,27 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   </div>
 </footer>
 
+<!-- ============ CARRINHO ============ -->
+<button class="cartbtn" id="cartbtn" type="button" aria-label="Ver mi pedido">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 4h2l2.4 11.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L20 8H6"/>
+    <circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/>
+  </svg>
+  Mi pedido <span class="qt" id="cartqt">0</span>
+</button>
+
+<div class="sheetbg" id="sheetbg"></div>
+
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheettit">
+  <div class="shead">
+    <h3 id="sheettit">Mi pedido</h3>
+    <button class="sclose" id="sclose" type="button" aria-label="Cerrar">&times;</button>
+  </div>
+  <div class="sbody" id="sbody"></div>
+  <div class="sfoot" id="sfoot"></div>
+</aside>
+
+
 <script>
 (function(){
 "use strict";
@@ -652,36 +767,39 @@ var CATS = [
   {k:"hombre",    l:"Hombre"}
 ];
 
-/* t:"" muestra "Consultar tallas". PENDIENTE: las tallas reales de los vestidos. */
+/* t:"" muestra "Consultar tallas". t puede ser "P M G" o un rango "36 al 46".
+   p: precio en bolivianos. p:0 muestra "Consultar precio": la pieza entra al
+   pedido igual, pero no suma al total, y el total sale como parcial.
+   PENDIENTE: los precios reales de la tienda. */
 var PIEZAS = [
-  {c:"vestidos",  f:"vestido-rojo-volados.jpg",     n:"Vestido rojo con volados", m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-rojo-flores.jpg",      n:"Vestido rojo con flores",  m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-escote-rojo.jpg",      n:"Vestido escote joya",      m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-escote-colores.jpg",   n:"Escote joya, 4 colores",   m:"", r:"", t:"P M G", d:"Rojo, blanco, beige y negro"},
-  {c:"vestidos",  f:"vestido-midi-rosa.jpg",        n:"Midi bordado rosa",        m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-midi-azul.jpg",        n:"Midi bordado azul",        m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-midi-beige.jpg",       n:"Midi bordado beige",       m:"", r:"", t:"P M G"},
-  {c:"vestidos",  f:"vestido-largo-rosa.jpg",       n:"Vestido largo con tajo",   m:"", r:"", t:"P M G"},
-  {c:"conjuntos", f:"conjunto-blanco.jpg",          n:"Conjunto blanco",          m:"", r:"", t:"", d:"Top con pedrería y pantalón"},
-  {c:"conjuntos", f:"conjunto-verde.jpg",           n:"Conjunto verde",           m:"", r:"", t:"", d:"Chaleco y pantalón"},
-  {c:"blusas",    f:"top-blanco-pedreria.jpg",      n:"Top blanco con pedrería",  m:"", r:"", t:""},
-  {c:"blusas",    f:"tranze-1907-blusa-rosa.jpg",   n:"Blusa cropped",            m:"Tranze", r:"1907", t:"P M G"},
-  {c:"jean", f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46"},
-  {c:"jean", f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46"},
-  {c:"jean", f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46"},
-  {c:"jean", f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46"},
-  {c:"jean", f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46"},
-  {c:"jean", f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46"},
-  {c:"jean", f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46"},
-  {c:"jean", f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46"},
-  {c:"jean", f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44"},
-  {c:"jean", f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46"},
-  {c:"jean", f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46"},
-  {c:"jean", f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46"},
-  {c:"hombre", f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46"},
-  {c:"hombre", f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46"},
-  {c:"hombre", f:"masculino-polo-preta.jpg",     n:"Polo negra",         m:"Driton", r:"",      t:""},
-  {c:"hombre", f:"masculino-camisa-azul.jpg",    n:"Camisa celeste",     m:"Driton", r:"",      t:""}
+  {c:"vestidos",  f:"vestido-rojo-volados.jpg",     n:"Vestido rojo con volados", m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-rojo-flores.jpg",      n:"Vestido rojo con flores",  m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-escote-rojo.jpg",      n:"Vestido escote joya",      m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-escote-colores.jpg",   n:"Escote joya, 4 colores",   m:"", r:"", t:"P M G", p:0, d:"Rojo, blanco, beige y negro"},
+  {c:"vestidos",  f:"vestido-midi-rosa.jpg",        n:"Midi bordado rosa",        m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-midi-azul.jpg",        n:"Midi bordado azul",        m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-midi-beige.jpg",       n:"Midi bordado beige",       m:"", r:"", t:"P M G", p:0},
+  {c:"vestidos",  f:"vestido-largo-rosa.jpg",       n:"Vestido largo con tajo",   m:"", r:"", t:"P M G", p:0},
+  {c:"conjuntos", f:"conjunto-blanco.jpg",          n:"Conjunto blanco",          m:"", r:"", t:"", p:0, d:"Top con pedrería y pantalón"},
+  {c:"conjuntos", f:"conjunto-verde.jpg",           n:"Conjunto verde",           m:"", r:"", t:"", p:0, d:"Chaleco y pantalón"},
+  {c:"blusas",    f:"top-blanco-pedreria.jpg",      n:"Top blanco con pedrería",  m:"", r:"", t:"", p:0},
+  {c:"blusas",    f:"tranze-1907-blusa-rosa.jpg",   n:"Blusa cropped",            m:"Tranze", r:"1907", t:"P M G", p:0},
+  {c:"jean", f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44", p:0},
+  {c:"jean", f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46", p:0},
+  {c:"jean", f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46", p:0},
+  {c:"hombre", f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46", p:0},
+  {c:"hombre", f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46", p:0},
+  {c:"hombre", f:"masculino-polo-preta.jpg",     n:"Polo negra",         m:"Driton", r:"",      t:"", p:0},
+  {c:"hombre", f:"masculino-camisa-azul.jpg",    n:"Camisa celeste",     m:"Driton", r:"",      t:"", p:0}
 ];
 
 var FAQ = [
@@ -773,14 +891,254 @@ $$(".js-wa").forEach(function(a){
   if(href){ a.href=href; a.target="_blank"; a.rel="noopener"; }
 });
 
+/* ============================================================
+   CARRINHO
+   ------------------------------------------------------------
+   A pagina nao cobra e nao confere pagamento nenhum: ela monta
+   o pedido, mostra o QR e manda tudo escrito para o WhatsApp.
+   Quem confere o comprovante contra o extrato e a loja.
+
+   DEPLOY STEP: para mostrar o QR na propria pagina, poner aqui
+   el nombre del archivo, por ejemplo "assets/qr.jpg", y subirlo
+   a esa carpeta. Mientras este vacio, la pagina dice que el QR
+   llega por WhatsApp -- que es verdad y no promete de menos.
+   ============================================================ */
+var QR = "";
+
+function bs(n){ return "Bs " + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+
+/* "P M G" vira ["P","M","G"]; "36 al 46" vira os pares 36..46;
+   "" nao tem talla para escolher. */
+function tallasDe(t){
+  if(!t) return [];
+  var r = t.match(/^(\d+)\s*al\s*(\d+)$/i);
+  if(r){
+    var a=+r[1], b=+r[2], out=[];
+    for(var i=a;i<=b;i+=2) out.push(String(i));
+    return out;
+  }
+  return t.split(/\s+/).filter(Boolean);
+}
+
+var CART = (function(){
+  var CHAVE = "mm_pedido_v1";
+  var itens = [];
+
+  try{
+    var cru = localStorage.getItem(CHAVE);
+    if(cru){
+      var lido = JSON.parse(cru);
+      if(Object.prototype.toString.call(lido) === "[object Array]") itens = lido;
+    }
+  }catch(e){ itens = []; }
+
+  function salva(){
+    try{ localStorage.setItem(CHAVE, JSON.stringify(itens)); }catch(e){}
+  }
+  function chave(f,t){ return f + "|" + t; }
+  function acha(f,t){
+    for(var i=0;i<itens.length;i++) if(chave(itens[i].f,itens[i].t)===chave(f,t)) return i;
+    return -1;
+  }
+  return {
+    itens: function(){ return itens.slice(); },
+    qtd: function(){ var n=0; itens.forEach(function(i){n+=i.q}); return n; },
+    /* total soma so o que tem preco; "parcial" avisa que falta consultar */
+    total: function(){
+      var v=0, parcial=false;
+      itens.forEach(function(i){ if(i.p>0) v += i.p*i.q; else parcial=true; });
+      return {valor:v, parcial:parcial};
+    },
+    add: function(pz, talla){
+      var i = acha(pz.f, talla);
+      if(i>=0) itens[i].q++;
+      else itens.push({f:pz.f, n:pz.n, r:pz.r||"", t:talla, p:pz.p||0, q:1});
+      salva();
+    },
+    muda: function(f,t,d){
+      var i=acha(f,t); if(i<0) return;
+      itens[i].q += d;
+      if(itens[i].q<=0) itens.splice(i,1);
+      salva();
+    },
+    tira: function(f,t){ var i=acha(f,t); if(i>=0){ itens.splice(i,1); salva(); } },
+    limpa: function(){ itens=[]; salva(); }
+  };
+})();
+
+/* o texto que chega no WhatsApp da loja */
+function textoPedido(pago){
+  var linhas = ["Hola! Quiero hacer este pedido:", ""];
+  CART.itens().forEach(function(i,n){
+    var l = (n+1)+") "+i.n;
+    if(i.r) l += " (ref "+i.r+")";
+    if(i.t && i.t!=="-") l += " — Talla "+i.t;
+    l += " — "+i.q+" u.";
+    l += i.p>0 ? " — "+bs(i.p*i.q) : " — precio a consultar";
+    linhas.push(l);
+  });
+  var t = CART.total();
+  linhas.push("");
+  if(t.valor>0) linhas.push((t.parcial?"Subtotal":"Total")+": "+bs(t.valor)+(t.parcial?" + piezas a consultar":""));
+  if(t.valor>0) linhas.push("(sin el env\u00edo)");
+  linhas.push("");
+  linhas.push(pago
+    ? "Ya hice el pago por QR. Les mando la captura del comprobante acá mismo."
+    : "Antes de pagar quiero confirmar disponibilidad y el total con el envío.");
+  return linhas.join("\n");
+}
+
+/* ---------- a gaveta do pedido ---------- */
+var WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .8 1.7 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5-.1 1.1Z"/></svg>';
+
+var pintaCarrinho, abreGaveta;
+
+(function(){
+  var btn=$("#cartbtn"), qt=$("#cartqt"), bg=$("#sheetbg"), sh=$("#sheet"),
+      body=$("#sbody"), foot=$("#sfoot"), tit=$("#sheettit"), fechar=$("#sclose");
+  if(!btn||!sh) return;
+
+  var tela = "pedido";   /* "pedido" ou "pago" */
+
+  function abre(qual){
+    tela = qual || "pedido";
+    /* marca como aberta ANTES de desenhar: pinta() sai cedo se a gaveta
+       ainda estiver fechada, e era isso que deixava a lista vazia. */
+    bg.classList.add("on"); sh.classList.add("on");
+    pinta();
+    document.body.style.overflow="hidden";
+  }
+  function fecha(){
+    bg.classList.remove("on"); sh.classList.remove("on");
+    document.body.style.overflow="";
+  }
+  abreGaveta = abre;
+
+  function escapa(x){
+    return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function telaPedido(){
+    var its = CART.itens();
+    tit.textContent = "Mi pedido";
+    if(!its.length){
+      body.innerHTML = '<div class="vazio"><p>Todavía no agregaste nada.</p>'
+        + '<p>Elegí tu talla en las piezas que te gusten y tocá <b>Agregar al pedido</b>.</p></div>';
+      foot.innerHTML = '<button class="sghost" type="button" id="segue">Seguir mirando</button>';
+      $("#segue").addEventListener("click", fecha);
+      return;
+    }
+    var h="";
+    its.forEach(function(i){
+      h += '<div class="ci" data-f="'+escapa(i.f)+'" data-t="'+escapa(i.t)+'">'
+         +   '<img alt="" data-rel="assets/pecas/'+escapa(i.f)+'">'
+         +   '<div>'
+         +     '<p class="cin">'+escapa(i.n)+'</p>'
+         +     '<p class="cit">'+(i.t && i.t!=="-" ? "Talla "+escapa(i.t) : "Talla a consultar")+(i.r?" · Ref "+escapa(i.r):"")+'</p>'
+         +     (i.p>0 ? '<p class="cip">'+bs(i.p*i.q)+'</p>' : '<p class="cip q">Precio a consultar</p>')
+         +     '<div class="qbox"><button type="button" data-d="-1" aria-label="Quitar uno">−</button>'
+         +       '<span>'+i.q+'</span>'
+         +       '<button type="button" data-d="1" aria-label="Agregar uno">+</button></div>'
+         +   '</div>'
+         +   '<button class="cidel" type="button">Quitar</button>'
+         + '</div>';
+    });
+    body.innerHTML = h;
+    $$("img[data-rel]", body).forEach(function(im){ im.src = asset(im.getAttribute("data-rel")); });
+
+    $$(".ci", body).forEach(function(row){
+      var f=row.getAttribute("data-f"), t=row.getAttribute("data-t");
+      $$("button[data-d]", row).forEach(function(b){
+        b.addEventListener("click", function(){ CART.muda(f,t,+b.getAttribute("data-d")); pinta(); });
+      });
+      row.querySelector(".cidel").addEventListener("click", function(){ CART.tira(f,t); pinta(); });
+    });
+
+    var tt = CART.total();
+    foot.innerHTML =
+      '<div class="tot"><span class="tl2">'+(tt.parcial?"Subtotal":"Total")+'</span>'
+      + '<span class="tv">'+(tt.valor>0?bs(tt.valor):"A consultar")+'</span></div>'
+      + (tt.parcial?'<p class="nota">Hay piezas sin precio en la web. Te pasamos esos precios por WhatsApp.</p>':'')
+      + '<p class="nota">El envío no está incluido. Te lo calculamos según tu ciudad.</p>'
+      + '<button class="sbtn" type="button" id="irpago">Continuar</button>'
+      + '<button class="sghost" type="button" id="segue">Seguir mirando</button>';
+    $("#irpago").addEventListener("click", function(){ tela="pago"; pinta(); body.scrollTop=0; });
+    $("#segue").addEventListener("click", fecha);
+  }
+
+  function telaPago(){
+    var tt = CART.total();
+    var temQR = !!QR;
+    tit.textContent = temQR ? "Pagar y enviar" : "Enviar pedido";
+    var h = "";
+
+    if(temQR){
+      /* com o QR na pagina: ela paga, tira print e manda tudo junto */
+      h += '<div class="paso"><span class="num">1</span><div class="tx">Pagá con <b>QR</b> desde tu app del banco'
+         + (tt.valor>0 && !tt.parcial ? ': <b>'+bs(tt.valor)+'</b>' : '')
+         + '.</div></div>';
+      h += '<div class="qrbox"><img src="'+asset(QR)+'" alt="Código QR de Michely Modas"><p>Michely Modas</p></div>';
+      h += '<div class="paso"><span class="num">2</span><div class="tx">Sacá <b>captura del comprobante</b>.</div></div>';
+      h += '<div class="paso"><span class="num">3</span><div class="tx">Tocá el botón de abajo: te abre el WhatsApp con el pedido ya escrito. <b>Adjuntá ahí la captura.</b></div></div>';
+    }else{
+      /* sem QR configurado: nao manda pagar, porque ela ainda nao sabe
+         o total com o envio nem para onde pagar */
+      h += '<div class="paso"><span class="num">1</span><div class="tx">Tocá el botón de abajo: te abre el WhatsApp con <b>el pedido ya escrito</b>.</div></div>';
+      h += '<div class="paso"><span class="num">2</span><div class="tx">Te pasamos el <b>QR</b> con el total y el envío a tu ciudad.</div></div>';
+      h += '<div class="paso"><span class="num">3</span><div class="tx">Pagás y nos mandás la <b>captura del comprobante</b> por ahí mismo.</div></div>';
+    }
+
+    h += '<div class="aviso"><b>Importante:</b> el pedido queda confirmado cuando verificamos el pago y que tengamos la pieza en tu talla. '
+       + 'De cada modelo entran pocas por talla. Si justo se acabó, te devolvemos el dinero o lo usás en otra pieza, como prefieras.</div>';
+    body.innerHTML = h;
+
+    foot.innerHTML = temQR
+      ? '<button class="sbtn wa" type="button" id="wapago">'+WA_SVG+'Ya pagué, enviar pedido</button>'
+        + '<button class="sghost" type="button" id="waconsulta">Prefiero consultar antes de pagar</button>'
+        + '<button class="sghost" type="button" id="volta">Volver al pedido</button>'
+      : '<button class="sbtn wa" type="button" id="waconsulta">'+WA_SVG+'Enviar pedido por WhatsApp</button>'
+        + '<button class="sghost" type="button" id="volta">Volver al pedido</button>';
+
+    function manda(pago){
+      var href = waLink(textoPedido(pago));
+      if(!href) return;
+      window.open(href, "_blank", "noopener");
+    }
+    var bp = $("#wapago"); if(bp) bp.addEventListener("click", function(){ manda(true); });
+    $("#waconsulta").addEventListener("click", function(){ manda(false); });
+    $("#volta").addEventListener("click", function(){ tela="pedido"; pinta(); body.scrollTop=0; });
+  }
+
+  function pinta(){
+    var n = CART.qtd();
+    qt.textContent = n;
+    btn.classList.toggle("on", n>0);
+    if(!sh.classList.contains("on")) return;
+    if(n===0) tela="pedido";
+    if(tela==="pago") telaPago(); else telaPedido();
+  }
+  pintaCarrinho = function(){
+    var n = CART.qtd();
+    qt.textContent = n;
+    btn.classList.toggle("on", n>0);
+    if(sh.classList.contains("on")) pinta();
+  };
+
+  btn.addEventListener("click", function(){ abre("pedido"); });
+  fechar.addEventListener("click", fecha);
+  bg.addEventListener("click", fecha);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") fecha(); });
+
+  pintaCarrinho();
+})();
+
 /* ---------- vitrine com filtro ---------- */
 (function(){
   var g = $("#grid"), fb = $("#filters"), cnt = $("#count");
   if(!g) return;
 
   PIEZAS.forEach(function(p){
-    var msg = "Hola, me interesa "+p.n+(p.r?" (ref "+p.r+")":"")+". ¿La tenés disponible?";
-    var href = waLink(msg);
+    var ts = tallasDe(p.t);
     var tag = p.r
       ? '<svg class="tag" viewBox="0 0 52 80" aria-hidden="true">'
         +'<path d="M12 4 L44 14 L44 66 L12 76 Z" fill="#17243B" opacity=".93"/>'
@@ -801,9 +1159,52 @@ $$(".js-wa").forEach(function(a){
         '<p class="nm">'+p.n+'</p>'+
         (sub?'<p class="br">'+sub+'</p>':'')+
         '<p class="tl">'+(p.t?'Tallas '+p.t:'Consultar tallas')+'</p>'+
-        '<a class="ask"'+(href?' href="'+href+'" target="_blank" rel="noopener"':' href="#lista"')+'>Preguntar por esta &rarr;</a>'+
+        (p.p>0
+          ? '<p class="pr">'+bs(p.p)+'<small>BOB</small></p>'
+          : '<p class="pr ask-pr">Consultar precio</p>')+
+        (ts.length ? '<div class="tallas" role="group" aria-label="Elegi tu talla"></div>' : '')+
+        '<button class="addbtn" type="button">Agregar al pedido</button>'+
       '</div>';
     wireImg(el.querySelector(".shot img"), "assets/pecas/"+p.f);
+
+    /* escolha da talla */
+    var escolhida = ts.length ? null : "-";
+    if(ts.length){
+      var cx = el.querySelector(".tallas");
+      ts.forEach(function(t){
+        var b=document.createElement("button");
+        b.type="button"; b.className="tch"; b.textContent=t;
+        b.setAttribute("aria-pressed","false");
+        b.addEventListener("click", function(){
+          $$(".tch",cx).forEach(function(o){o.classList.remove("on");o.setAttribute("aria-pressed","false")});
+          b.classList.add("on"); b.setAttribute("aria-pressed","true");
+          escolhida = t;
+          bt.classList.remove("warn");
+          bt.textContent = "Agregar al pedido";
+        });
+        cx.appendChild(b);
+      });
+    }
+
+    /* agregar */
+    var bt = el.querySelector(".addbtn"), volta=null;
+    bt.addEventListener("click", function(){
+      if(escolhida===null){
+        bt.classList.add("warn");
+        bt.textContent = "Eleg\u00ed tu talla primero";
+        return;
+      }
+      CART.add(p, escolhida);
+      pintaCarrinho();
+      bt.classList.add("done");
+      bt.textContent = "Agregado \u2713";
+      clearTimeout(volta);
+      volta = setTimeout(function(){
+        bt.classList.remove("done");
+        bt.textContent = "Agregar al pedido";
+      }, 1700);
+    });
+
     g.appendChild(el);
   });
 
