@@ -39,6 +39,13 @@ Documento único do projeto. Guarda toda decisão tomada e é a fonte da verdade
    catálogo da Tranze e da Driton.
 5. ~~Cartão de compartilhamento (og:)~~ **resolvido:** aponta para
    https://michelymodas.netlify.app/ e assets/og.jpg, em 1200x630.
+6. **Preços: inventados por mim, a pedido do dono, na faixa 110 a 290 Bs.**
+   Precisam ser conferidos peça a peça antes de virarem rotina — cliente
+   paga o que está na tela.
+7. **O QR do BNB vence em 2 de março de 2027.** Depois disso tem que gerar
+   outro no banco e trocar `assets/qr.jpg`, ou esvaziar a constante `QR`
+   no index.html — a página volta sozinha a dizer que o QR vai pelo
+   WhatsApp. Conta: Velasco Ramirez Alexandre, BNB 3503690542.
 
 ---
 

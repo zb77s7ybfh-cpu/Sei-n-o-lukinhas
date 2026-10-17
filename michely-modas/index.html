@@ -347,8 +347,12 @@ p{margin:0}
 .paso .tx{font-size:.9rem;line-height:1.55;color:var(--ink)}
 .paso .tx b{font-weight:700}
 .qrbox{text-align:center;margin:6px 0 4px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.qrbox img{width:min(230px,70%);height:auto;border-radius:8px}
+.qrbox img{width:min(300px,88%);height:auto;border-radius:8px}
 .qrbox p{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:11px;text-transform:uppercase}
+.qrbox .quien{font-family:var(--body);font-size:.84rem;letter-spacing:.01em;color:var(--ink);text-transform:none;line-height:1.5}
+.qrbox .quien b{font-weight:700}
+.tip{font-size:.8rem;line-height:1.55;color:var(--ink-soft);margin:10px 2px 2px}
+.tip b{color:var(--ink);font-weight:700}
 .aviso{margin-top:14px;padding:13px 15px;background:var(--accent-soft);border-radius:11px;
   font-size:.84rem;line-height:1.55;color:#5A3F46}
 
@@ -770,36 +774,36 @@ var CATS = [
 /* t:"" muestra "Consultar tallas". t puede ser "P M G" o un rango "36 al 46".
    p: precio en bolivianos. p:0 muestra "Consultar precio": la pieza entra al
    pedido igual, pero no suma al total, y el total sale como parcial.
-   PENDIENTE: los precios reales de la tienda. */
+   Precios en bolivianos, revisados con la tienda. */
 var PIEZAS = [
-  {c:"vestidos",  f:"vestido-rojo-volados.jpg",     n:"Vestido rojo con volados", m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-rojo-flores.jpg",      n:"Vestido rojo con flores",  m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-escote-rojo.jpg",      n:"Vestido escote joya",      m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-escote-colores.jpg",   n:"Escote joya, 4 colores",   m:"", r:"", t:"P M G", p:0, d:"Rojo, blanco, beige y negro"},
-  {c:"vestidos",  f:"vestido-midi-rosa.jpg",        n:"Midi bordado rosa",        m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-midi-azul.jpg",        n:"Midi bordado azul",        m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-midi-beige.jpg",       n:"Midi bordado beige",       m:"", r:"", t:"P M G", p:0},
-  {c:"vestidos",  f:"vestido-largo-rosa.jpg",       n:"Vestido largo con tajo",   m:"", r:"", t:"P M G", p:0},
-  {c:"conjuntos", f:"conjunto-blanco.jpg",          n:"Conjunto blanco",          m:"", r:"", t:"", p:0, d:"Top con pedrería y pantalón"},
-  {c:"conjuntos", f:"conjunto-verde.jpg",           n:"Conjunto verde",           m:"", r:"", t:"", p:0, d:"Chaleco y pantalón"},
-  {c:"blusas",    f:"top-blanco-pedreria.jpg",      n:"Top blanco con pedrería",  m:"", r:"", t:"", p:0},
-  {c:"blusas",    f:"tranze-1907-blusa-rosa.jpg",   n:"Blusa cropped",            m:"Tranze", r:"1907", t:"P M G", p:0},
-  {c:"jean", f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44", p:0},
-  {c:"jean", f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46", p:0},
-  {c:"jean", f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46", p:0},
-  {c:"hombre", f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46", p:0},
-  {c:"hombre", f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46", p:0},
-  {c:"hombre", f:"masculino-polo-preta.jpg",     n:"Polo negra",         m:"Driton", r:"",      t:"", p:0},
-  {c:"hombre", f:"masculino-camisa-azul.jpg",    n:"Camisa celeste",     m:"Driton", r:"",      t:"", p:0}
+  {c:"vestidos",  f:"vestido-rojo-volados.jpg",     n:"Vestido rojo con volados", m:"", r:"", t:"P M G", p:240},
+  {c:"vestidos",  f:"vestido-rojo-flores.jpg",      n:"Vestido rojo con flores",  m:"", r:"", t:"P M G", p:250},
+  {c:"vestidos",  f:"vestido-escote-rojo.jpg",      n:"Vestido escote joya",      m:"", r:"", t:"P M G", p:230},
+  {c:"vestidos",  f:"vestido-escote-colores.jpg",   n:"Escote joya, 4 colores",   m:"", r:"", t:"P M G", p:230, d:"Rojo, blanco, beige y negro"},
+  {c:"vestidos",  f:"vestido-midi-rosa.jpg",        n:"Midi bordado rosa",        m:"", r:"", t:"P M G", p:270},
+  {c:"vestidos",  f:"vestido-midi-azul.jpg",        n:"Midi bordado azul",        m:"", r:"", t:"P M G", p:270},
+  {c:"vestidos",  f:"vestido-midi-beige.jpg",       n:"Midi bordado beige",       m:"", r:"", t:"P M G", p:270},
+  {c:"vestidos",  f:"vestido-largo-rosa.jpg",       n:"Vestido largo con tajo",   m:"", r:"", t:"P M G", p:290},
+  {c:"conjuntos", f:"conjunto-blanco.jpg",          n:"Conjunto blanco",          m:"", r:"", t:"", p:280, d:"Top con pedrería y pantalón"},
+  {c:"conjuntos", f:"conjunto-verde.jpg",           n:"Conjunto verde",           m:"", r:"", t:"", p:260, d:"Chaleco y pantalón"},
+  {c:"blusas",    f:"top-blanco-pedreria.jpg",      n:"Top blanco con pedrería",  m:"", r:"", t:"", p:130},
+  {c:"blusas",    f:"tranze-1907-blusa-rosa.jpg",   n:"Blusa cropped",            m:"Tranze", r:"1907", t:"P M G", p:120},
+  {c:"jean", f:"tranze-51246-jeans-escuro.jpg",  n:"Jean skinny oscuro", m:"Tranze", r:"51246", t:"36 al 46", p:220},
+  {c:"jean", f:"tranze-51256-jeans-medio.jpg",   n:"Jean skinny medio",  m:"Tranze", r:"51256", t:"36 al 46", p:220},
+  {c:"jean", f:"tranze-51247-jeans-media.jpg",   n:"Jean tiro medio",    m:"Tranze", r:"51247", t:"36 al 46", p:210},
+  {c:"jean", f:"tranze-51264-jeans-preto.jpg",   n:"Jean negro",         m:"Tranze", r:"51264", t:"36 al 46", p:215},
+  {c:"jean", f:"tranze-51266-mom-jeans.jpg",     n:"Mom jean",           m:"Tranze", r:"51266", t:"36 al 46", p:225},
+  {c:"jean", f:"tranze-51240-wide-leg.jpg",      n:"Wide leg",           m:"Tranze", r:"51240", t:"36 al 46", p:230},
+  {c:"jean", f:"tranze-51234-wide-leg-claro.jpg",n:"Wide leg claro",     m:"Tranze", r:"51234", t:"36 al 46", p:230},
+  {c:"jean", f:"tranze-61159-bermuda-escura.jpg",n:"Bermuda oscura",     m:"Tranze", r:"61159", t:"36 al 46", p:150},
+  {c:"jean", f:"tranze-61158-bermuda.jpg",       n:"Bermuda clara",      m:"Tranze", r:"61158", t:"36 al 44", p:150},
+  {c:"jean", f:"tranze-61155-short-medio.jpg",   n:"Short medio",        m:"Tranze", r:"61155", t:"36 al 46", p:130},
+  {c:"jean", f:"tranze-61155-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61155", t:"36 al 46", p:130},
+  {c:"jean", f:"tranze-61157-short-escuro.jpg",  n:"Short oscuro",       m:"Tranze", r:"61157", t:"36 al 46", p:135},
+  {c:"hombre", f:"driton-900126-polo-verde-bermuda-550925.jpg", n:"Polo verde y bermuda", m:"Driton", r:"900126", t:"36 al 46", p:200},
+  {c:"hombre", f:"driton-720326-camiseta-verde-bermuda-550925.jpg", n:"Camiseta y bermuda", m:"Driton", r:"720326", t:"36 al 46", p:190},
+  {c:"hombre", f:"masculino-polo-preta.jpg",     n:"Polo negra",         m:"Driton", r:"",      t:"", p:110},
+  {c:"hombre", f:"masculino-camisa-azul.jpg",    n:"Camisa celeste",     m:"Driton", r:"",      t:"", p:125}
 ];
 
 var FAQ = [
@@ -898,12 +902,14 @@ $$(".js-wa").forEach(function(a){
    o pedido, mostra o QR e manda tudo escrito para o WhatsApp.
    Quem confere o comprovante contra o extrato e a loja.
 
-   DEPLOY STEP: para mostrar o QR na propria pagina, poner aqui
-   el nombre del archivo, por ejemplo "assets/qr.jpg", y subirlo
-   a esa carpeta. Mientras este vacio, la pagina dice que el QR
-   llega por WhatsApp -- que es verdad y no promete de menos.
+   El QR del BNB esta en assets/qr.jpg. Es estatico y sin monto:
+   la clienta escribe el total, por eso la pantalla se lo muestra.
+   OJO: ESE QR VENCE EL 2 DE MARZO DE 2027. Despues de esa fecha hay
+   que generar uno nuevo en el banco y reemplazar el archivo, o dejar
+   QR vacio -- entonces la pagina vuelve a decir que el QR llega por
+   WhatsApp, que es verdad y no promete de menos.
    ============================================================ */
-var QR = "";
+var QR = "assets/qr.jpg";
 
 function bs(n){ return "Bs " + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
@@ -1077,7 +1083,14 @@ var pintaCarrinho, abreGaveta;
       h += '<div class="paso"><span class="num">1</span><div class="tx">Pagá con <b>QR</b> desde tu app del banco'
          + (tt.valor>0 && !tt.parcial ? ': <b>'+bs(tt.valor)+'</b>' : '')
          + '.</div></div>';
-      h += '<div class="qrbox"><img src="'+asset(QR)+'" alt="Código QR de Michely Modas"><p>Michely Modas</p></div>';
+      /* mostra o nome da conta: e o que o app do banco dela vai exibir,
+         e se nao bater com a tela ela desconfia e desiste */
+      h += '<div class="qrbox"><img src="'+asset(QR)+'" alt="Código QR del BNB para pagar a Michely Modas">'
+         + '<p class="quien">Pagar a <b>Velasco Ramirez Alexandre</b><br>Cuenta BNB 3503690542</p></div>';
+      /* no celular ela nao consegue escanear o QR da propria tela:
+         tem que salvar a imagem e abrir pela galeria no app do banco */
+      h += '<p class="tip">Desde el celular no se puede escanear el QR de tu propia pantalla: '
+         + 'guard\u00e1 la imagen y abrila con la opci\u00f3n <b>leer QR desde la galer\u00eda</b> de tu app.</p>';
       h += '<div class="paso"><span class="num">2</span><div class="tx">Sacá <b>captura del comprobante</b>.</div></div>';
       h += '<div class="paso"><span class="num">3</span><div class="tx">Tocá el botón de abajo: te abre el WhatsApp con el pedido ya escrito. <b>Adjuntá ahí la captura.</b></div></div>';
     }else{
