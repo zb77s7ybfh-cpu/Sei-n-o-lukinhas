@@ -1,5 +1,4 @@
 {
-  "assets/selo.jpg": "/_blob/5b4c0dcfc34b18006bdf683cc209db4e",
   "assets/fachada.jpg": "/_blob/4639f2a2248389d32bf6a11851aee7b2",
   "assets/hero-ending.jpg": "/_blob/6b1a7c3ce0ca4a90cb412894367d0509",
   "assets/hero-poster.jpg": "/_blob/3fe410b59de4332df6d588d15811a776",
@@ -31,5 +30,7 @@
   "assets/pecas/vestido-midi-beige.jpg": "/_blob/26d5854c4e8118d7cdaa4ea0006d56f4",
   "assets/pecas/vestido-midi-rosa.jpg": "/_blob/896be9dc0955d44b8a2b9b44e4e75422",
   "assets/pecas/vestido-rojo-flores.jpg": "/_blob/339b79f4afec0a525bd670a1b876f508",
-  "assets/pecas/vestido-rojo-volados.jpg": "/_blob/9384b4d0af60990ed1c4cabe60152111"
+  "assets/pecas/vestido-rojo-volados.jpg": "/_blob/9384b4d0af60990ed1c4cabe60152111",
+  "assets/qr.jpg": "/_blob/fda1659e74fb56806b5f9ef1425d7431",
+  "assets/selo.jpg": "/_blob/5b4c0dcfc34b18006bdf683cc209db4e"
 }

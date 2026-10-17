@@ -9,11 +9,14 @@ artefato, cada arquivo tem um endereco fixo, /_blob/<id>, que o proprio
 Claude garante resolver em toda visualizacao.
 
 Este script troca um pelo outro em um unico ponto: a funcao asset().
+Sao duas paginas: index.html (a loja) e carrito.html (o pedido).
+As duas usam a mesma funcao asset(), entao a troca e a mesma nas duas.
+
 Rode assim, da pasta michely-modas:
 
     python3 tools/gera-artefato.py <pasta-de-saida>
 
-e publique o index.html que ele escrever.
+e publique os dois arquivos que ele escrever.
 """
 import io, json, os, sys
 
@@ -48,41 +51,56 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("uso: python3 tools/gera-artefato.py <pasta-de-saida>")
     saida = sys.argv[1]
+    if not os.path.isdir(saida):
+        os.makedirs(saida)
 
     mapa = json.load(io.open(os.path.join(AQUI, "blobs.json"), encoding="utf-8"))
-    html = io.open(os.path.join(RAIZ, "index.html"), encoding="utf-8").read()
 
-    for alvo, _ in TROCAS:
-        if html.count(alvo) != 1:
-            sys.exit("o trecho abaixo mudou de forma; ajuste TROCAS neste "
-                     "script:\n" + alvo)
-
-    # todo arquivo que a pagina pede tem que estar no mapa
+    # tudo que as paginas podem pedir
     pedidos = set()
-    for linha in html.splitlines():
-        if 'data-src="assets/' in linha:
-            for pedaco in linha.split('data-src="')[1:]:
-                pedidos.add(pedaco.split('"')[0])
-        if 'asset("assets/' in linha:
-            for pedaco in linha.split('asset("')[1:]:
-                pedidos.add(pedaco.split('"')[0])
     for nome in os.listdir(os.path.join(RAIZ, "assets", "pecas")):
         pedidos.add("assets/pecas/" + nome)
+
+    paginas = ["index.html", "carrito.html"]
+    for pagina in paginas:
+        html = io.open(os.path.join(RAIZ, pagina), encoding="utf-8").read()
+
+        achou = False
+        for alvo, _ in TROCAS:
+            n = html.count(alvo)
+            if n > 1:
+                sys.exit("%s: o trecho abaixo aparece %d vezes:\n%s" % (pagina, n, alvo))
+            if n == 1:
+                achou = True
+        if not achou:
+            sys.exit("%s: nao achei nenhum trecho conhecido; "
+                     "a funcao asset() mudou de forma?" % pagina)
+
+        for linha in html.splitlines():
+            if 'data-src="assets/' in linha:
+                for pedaco in linha.split('data-src="')[1:]:
+                    pedidos.add(pedaco.split('"')[0])
+            for marca in ('asset("assets/', 'wireImg($("#selo"), "'):
+                if marca in linha:
+                    for pedaco in linha.split(marca)[1:]:
+                        alvo = pedaco.split('"')[0]
+                        if alvo.startswith("assets/"):
+                            pedidos.add(alvo)
+            if 'var QR = "assets/' in linha:
+                pedidos.add(linha.split('"')[1])
+
+        for alvo, troca in TROCAS:
+            html = html.replace(
+                alvo, troca.replace("__MAPA__", json.dumps(mapa, indent=2, sort_keys=True)))
+
+        io.open(os.path.join(saida, pagina), "w", encoding="utf-8").write(html)
 
     faltam = sorted(p for p in pedidos if p not in mapa)
     if faltam:
         sys.exit("faltam no blobs.json: " + ", ".join(faltam))
 
-    for alvo, troca in TROCAS:
-        html = html.replace(
-            alvo, troca.replace("__MAPA__", json.dumps(mapa, indent=2, sort_keys=True)))
-
-    if not os.path.isdir(saida):
-        os.makedirs(saida)
-    destino = os.path.join(saida, "index.html")
-    io.open(destino, "w", encoding="utf-8").write(html)
     print("escrevi %s (%d arquivos no mapa, %d pedidos conferidos)"
-          % (destino, len(mapa), len(pedidos)))
+          % (", ".join(paginas), len(mapa), len(pedidos)))
 
 
 if __name__ == "__main__":

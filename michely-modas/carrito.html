@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mi pedido · Michely Modas</title>
+<meta name="description" content="Revisá tu pedido de Michely Modas, pagá con QR y mandanos el comprobante por WhatsApp.">
+<meta name="theme-color" content="#F7F4F4">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23845F66'/%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23F7F4F4' stroke-width='1.1'/%3E%3Cpath d='M10 22V11l6 7 6-7v11' fill='none' stroke='%23EBC1CB' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --canvas:#F7F4F4;        /* quase branco, com o veu da marca */
+  --canvas-deep:#EDE4E5;   /* mauve bem claro, das faixas alternadas */
+  --panel:#FFFFFF;
+  --ink:#3E3238;           /* mauve profundo: o texto */
+  --ink-soft:#6B5A60;
+  --accent:#77545C;        /* mauve da marca, no tom que se le */
+  --accent-hover:#5F424A;
+  --accent-soft:#F2E3E6;
+  --brand:#845F66;         /* a cor exata do circulo do logo */
+  --rose:#C38B95;          /* rose gold escuro, do M */
+  --rose-light:#EBC1CB;    /* rose gold claro, do M */
+  --denim:#2E4C7E;
+  --line:#E0D3D5;
+  --display:"Prata",Georgia,"Times New Roman",serif;
+  --body:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-soft:cubic-bezier(.33,.02,.2,1);
+  --tshadow:0 1px 2px rgba(6,10,20,.92),0 3px 12px rgba(6,10,20,.76),0 10px 44px rgba(6,10,20,.78);
+  --gut:clamp(16px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--body);font-size:clamp(16px,1.05vw,18px);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;letter-spacing:-.004em;margin:0}
+p{margin:0}
+
+body{background:var(--canvas);color:var(--ink);font-family:var(--body);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 clamp(18px,5vw,28px)}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(247,244,244,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topin{max-width:720px;margin:0 auto;padding:14px clamp(18px,5vw,28px);
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.marca img{width:38px;height:38px;border-radius:50%}
+.marca span{font-family:var(--display);font-weight:400;font-size:1.18rem;letter-spacing:.03em}
+.volver{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;
+  min-height:44px;display:inline-flex;align-items:center}
+.volver:hover{color:var(--accent-hover)}
+
+h1{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,5.5vw,2.5rem);
+  line-height:1.12;letter-spacing:-.01em;margin:clamp(26px,5vh,42px) 0 6px}
+.sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:clamp(20px,3.5vh,30px)}
+.bloco{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(16px,3.5vw,24px);margin-bottom:18px}
+.bloco h2{font-family:var(--display);font-weight:400;font-size:1.25rem;margin-bottom:4px}
+.rodape{padding:34px 0 48px;text-align:center;color:var(--ink-soft);font-size:.85rem}
+.rodape a{color:var(--accent)}
+
+.sheetbg{position:fixed;inset:0;z-index:70;background:rgba(38,30,34,.52);opacity:0;pointer-events:none;
+  transition:opacity .34s var(--ease)}
+.sheetbg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:71;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--canvas);
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s var(--ease);
+  box-shadow:-18px 0 46px rgba(23,36,59,.16)}
+.sheet.on{transform:none}
+@media (max-width:560px){
+  .sheet{top:auto;width:100%;max-height:92vh;border-radius:18px 18px 0 0;transform:translateY(100%)}
+}
+.shead{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:20px clamp(18px,4vw,26px);border-bottom:1px solid var(--line)}
+.shead h3{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--ink)}
+.sclose{border:0;background:none;cursor:pointer;color:var(--ink-soft);font-size:1.5rem;line-height:1;
+  min-width:44px;min-height:44px;border-radius:50%}
+.sclose:hover{color:var(--ink);background:var(--canvas-deep)}
+.sbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px)}
+.sfoot{border-top:1px solid var(--line);padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px);background:var(--panel)}
+
+.ci{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci:last-child{border-bottom:0}
+.ci img{width:62px;height:62px;border-radius:10px;object-fit:cover;flex:none;background:var(--canvas-deep)}
+.ci .cin{font-weight:600;font-size:.92rem;color:var(--ink);line-height:1.3}
+.ci .cit{font-family:var(--mono);font-size:.71rem;letter-spacing:.07em;color:var(--ink-soft);margin-top:4px;text-transform:uppercase}
+.ci .cip{font-weight:700;font-size:.92rem;color:var(--ink);margin-top:6px}
+.ci .cip.q{font-weight:600;font-size:.82rem;color:var(--ink-soft)}
+.qbox{display:flex;align-items:center;gap:2px;margin-top:8px}
+.qbox button{width:30px;height:30px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);
+  cursor:pointer;font-size:1rem;line-height:1;border-radius:8px}
+.qbox button:hover{border-color:var(--ink)}
+.qbox span{font-family:var(--mono);font-size:.84rem;min-width:30px;text-align:center}
+.cidel{margin-left:auto;align-self:flex-start;border:0;background:none;cursor:pointer;
+  font-size:.76rem;color:var(--ink-soft);text-decoration:underline;padding:4px}
+.cidel:hover{color:var(--accent)}
+
+.tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.tot .tl2{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.tot .tv{font-family:var(--display);font-size:1.6rem;color:var(--ink)}
+.nota{font-size:.8rem;color:var(--ink-soft);line-height:1.5;margin-top:8px}
+.sbtn{margin-top:14px;width:100%;min-height:52px;border:0;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--body);font-weight:600;font-size:.98rem;background:var(--accent);color:#fff;
+  transition:background .3s var(--ease)}
+.sbtn:hover{background:var(--accent-hover)}
+.sbtn:disabled{opacity:.45;cursor:not-allowed}
+.sbtn.wa{background:#1F7A4D}
+.sbtn.wa:hover{background:#19653f}
+.sbtn svg{width:19px;height:19px;flex:none}
+.sghost{margin-top:10px;width:100%;min-height:46px;border:1.5px solid var(--line);background:var(--panel);
+  border-radius:999px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:.88rem;color:var(--ink-soft)}
+.sghost:hover{border-color:var(--ink);color:var(--ink)}
+.vazio{text-align:center;padding:48px 10px;color:var(--ink-soft)}
+.vazio p{margin-top:10px;font-size:.92rem}
+
+.paso{display:flex;gap:12px;padding:13px 0}
+.paso .num{flex:none;width:25px;height:25px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  font-family:var(--mono);font-size:.76rem;display:flex;align-items:center;justify-content:center;font-weight:500}
+.paso .tx{font-size:.9rem;line-height:1.55;color:var(--ink)}
+.paso .tx b{font-weight:700}
+.qrbox{text-align:center;margin:6px 0 4px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.qrbox img{width:min(300px,88%);height:auto;border-radius:8px}
+.qrbox p{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:11px;text-transform:uppercase}
+.qrbox .quien{font-family:var(--body);font-size:.84rem;letter-spacing:.01em;color:var(--ink);text-transform:none;line-height:1.5}
+.qrbox .quien b{font-weight:700}
+.tip{font-size:.8rem;line-height:1.55;color:var(--ink-soft);margin:10px 2px 2px}
+.tip b{color:var(--ink);font-weight:700}
+.aviso{margin-top:14px;padding:13px 15px;background:var(--accent-soft);border-radius:11px;
+  font-size:.84rem;line-height:1.55;color:#5A3F46}
+
+/* na pagina, a lista e os passos nao vivem mais dentro de uma gaveta */
+.sbody,.sfoot{padding:0;background:none;border:0;overflow:visible}
+.sfoot{margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topin">
+    <a class="marca" href="index.html">
+      <img id="selo" alt="" width="38" height="38">
+      <span>Michely Modas</span>
+    </a>
+    <a class="volver" href="index.html#nuevo">&larr; Seguir mirando</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 id="titulo">Mi pedido</h1>
+  <p class="sub" id="sub">Revisá lo que elegíste antes de pagar.</p>
+
+  <section class="bloco" id="lista"></section>
+  <section id="cierre"></section>
+
+  <p class="rodape">Michely Modas · Av. Federico Román, Guayaramerín ·
+    <a href="index.html">Volver a la tienda</a></p>
+</main>
+
+<script>
+(function(){
+"use strict";
+
+var $  = function(s,r){return (r||document).querySelector(s)};
+var $$ = function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+
+/* ============================================================
+   Estas pecas sao copia do index.html de proposito.
+   Um arquivo .js separado teria o mesmo problema de caminho que
+   as fotos ja tiveram: se o endereco da pagina mudar, o script
+   nao carrega e a pagina inteira morre. Copiado, nao quebra.
+   ============================================================ */
+var AP = (function(){
+  var path = location.pathname || "/";
+  if (/\/$/.test(path)) return "";                 // termina em barra: ja esta certo
+  if (/\.[a-z0-9]{2,5}$/i.test(path)) return "";   // termina em arquivo: ja esta certo
+  var last = path.split("/").pop();
+  return last ? last + "/" : "";
+})();
+/* A outra possibilidade. Se a primeira nao servir, a pagina troca sozinha. */
+var AP_ALT = (function(){
+  if (AP) return "";
+  var last = (location.pathname || "/").split("/").filter(Boolean).pop();
+  return (last && last.indexOf(".") === -1) ? last + "/" : "";
+})();
+var BASES = (AP === AP_ALT) ? [AP] : [AP, AP_ALT];
+var baseIdx = 0, healed = false;
+function asset(rel){ return BASES[baseIdx] + rel; }
+
+/* Chamado quando um arquivo nao carrega: troca a base e reaponta tudo. */
+function healAssets(){
+  if (healed || BASES.length < 2) return false;
+  healed = true; baseIdx = 1;
+  $$("img[data-rel]").forEach(function(im){
+    im.src = asset(im.getAttribute("data-rel"));
+  });
+  var sp = $("#statph");
+  if (sp) sp.style.backgroundImage = "url('" + asset("assets/hero-ending.jpg") + "')";
+  POSTER_URL = asset("assets/hero-poster.jpg");
+  VIDEO_URL  = asset("assets/hero-scrub.mp4");
+  if (typeof poster !== "undefined" && poster) poster.style.backgroundImage = "url('" + POSTER_URL + "')";
+  return true;
+}
+
+/* Toda imagem do site passa por aqui: guarda o caminho relativo e, se falhar,
+   pede o conserto e tenta de novo uma vez. */
+
+function wireImg(im, rel){
+  im.setAttribute("data-rel", rel);
+  im.addEventListener("error", function(){
+    if (im.getAttribute("data-tried")) return;
+    im.setAttribute("data-tried", "1");
+    if (healAssets()) im.src = asset(rel);
+  });
+  im.src = asset(rel);
+}
+
+var WHATSAPP = "59167820413";   /* +591 67820413 */
+function waLink(msg){
+  if(WHATSAPP==="PENDIENTE") return null;
+  return "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+}
+
+/* ============================================================
+   O QR do BNB. Estatico e sem monto: a cliente escreve o total,
+   por isso a tela mostra o valor.
+   OJO: ESSE QR VENCE EM 2 DE MARCO DE 2027. Depois disso, gerar
+   outro no banco e trocar o arquivo, ou deixar QR vazio -- a
+   pagina volta sozinha a dizer que o QR chega pelo WhatsApp.
+   ============================================================ */
+var QR = "assets/qr.jpg";
+
+function bs(n){ return "Bs " + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+
+/* "P M G" vira ["P","M","G"]; "36 al 46" vira os pares 36..46;
+   "" nao tem talla para escolher. */
+function tallasDe(t){
+  if(!t) return [];
+  var r = t.match(/^(\d+)\s*al\s*(\d+)$/i);
+  if(r){
+    var a=+r[1], b=+r[2], out=[];
+    for(var i=a;i<=b;i+=2) out.push(String(i));
+    return out;
+  }
+  return t.split(/\s+/).filter(Boolean);
+}
+
+var CART = (function(){
+  var CHAVE = "mm_pedido_v1";
+  var itens = [];
+
+  try{
+    var cru = localStorage.getItem(CHAVE);
+    if(cru){
+      var lido = JSON.parse(cru);
+      if(Object.prototype.toString.call(lido) === "[object Array]") itens = lido;
+    }
+  }catch(e){ itens = []; }
+
+  function salva(){
+    try{ localStorage.setItem(CHAVE, JSON.stringify(itens)); }catch(e){}
+  }
+  function chave(f,t){ return f + "|" + t; }
+  function acha(f,t){
+    for(var i=0;i<itens.length;i++) if(chave(itens[i].f,itens[i].t)===chave(f,t)) return i;
+    return -1;
+  }
+  return {
+    itens: function(){ return itens.slice(); },
+    qtd: function(){ var n=0; itens.forEach(function(i){n+=i.q}); return n; },
+    /* total soma so o que tem preco; "parcial" avisa que falta consultar */
+    total: function(){
+      var v=0, parcial=false;
+      itens.forEach(function(i){ if(i.p>0) v += i.p*i.q; else parcial=true; });
+      return {valor:v, parcial:parcial};
+    },
+    add: function(pz, talla){
+      var i = acha(pz.f, talla);
+      if(i>=0) itens[i].q++;
+      else itens.push({f:pz.f, n:pz.n, r:pz.r||"", t:talla, p:pz.p||0, q:1});
+      salva();
+    },
+    muda: function(f,t,d){
+      var i=acha(f,t); if(i<0) return;
+      itens[i].q += d;
+      if(itens[i].q<=0) itens.splice(i,1);
+      salva();
+    },
+    tira: function(f,t){ var i=acha(f,t); if(i>=0){ itens.splice(i,1); salva(); } },
+    limpa: function(){ itens=[]; salva(); }
+  };
+})();
+
+
+
+/* o texto que chega no WhatsApp da loja */
+function textoPedido(pago){
+  var linhas = ["Hola! Quiero hacer este pedido:", ""];
+  CART.itens().forEach(function(i,n){
+    var l = (n+1)+") "+i.n;
+    if(i.r) l += " (ref "+i.r+")";
+    if(i.t && i.t!=="-") l += " — Talla "+i.t;
+    l += " — "+i.q+" u.";
+    l += i.p>0 ? " — "+bs(i.p*i.q) : " — precio a consultar";
+    linhas.push(l);
+  });
+  var t = CART.total();
+  linhas.push("");
+  if(t.valor>0) linhas.push((t.parcial?"Subtotal":"Total")+": "+bs(t.valor)+(t.parcial?" + piezas a consultar":""));
+  if(t.valor>0) linhas.push("(sin el envío)");
+  linhas.push("");
+  linhas.push(pago
+    ? "Ya hice el pago por QR. Les mando la captura del comprobante acá mismo."
+    : "Antes de pagar quiero confirmar disponibilidad y el total con el envío.");
+  return linhas.join("\n");
+}
+
+var WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .8 1.7 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5-.1 1.1Z"/></svg>';
+
+function escapa(x){
+  return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+var lista = $("#lista"), cierre = $("#cierre"), titulo = $("#titulo"), sub = $("#sub");
+
+/* mesmo motivo do botao na loja: o endereco da loja sai de asset() */
+var LOJA = asset("index.html");
+$$('a[href^="index.html"]').forEach(function(a){
+  a.setAttribute("href", LOJA + a.getAttribute("href").slice("index.html".length));
+});
+
+function pinta(){
+  var its = CART.itens();
+
+  if(!its.length){
+    titulo.textContent = "Tu pedido est\u00e1 vac\u00edo";
+    sub.textContent = "Volv\u00e9 a la tienda y agreg\u00e1 las piezas que te gusten.";
+    lista.innerHTML = '<div class="vazio"><p>Todav\u00eda no agregaste nada.</p>'
+      + '<p>Eleg\u00ed tu talla en cada pieza y toc\u00e1 <b>Agregar al pedido</b>.</p></div>';
+    cierre.innerHTML = '<a class="sbtn" href="'+LOJA+'#nuevo" style="text-decoration:none">Ver lo que hay en la tienda</a>';
+    return;
+  }
+
+  titulo.textContent = "Mi pedido";
+  sub.textContent = "Revis\u00e1 lo que eleg\u00edste antes de pagar.";
+
+  var h = "";
+  its.forEach(function(i){
+    h += '<div class="ci" data-f="'+escapa(i.f)+'" data-t="'+escapa(i.t)+'">'
+       +   '<img alt="" data-rel="assets/pecas/'+escapa(i.f)+'">'
+       +   '<div>'
+       +     '<p class="cin">'+escapa(i.n)+'</p>'
+       +     '<p class="cit">'+(i.t && i.t!=="-" ? "Talla "+escapa(i.t) : "Talla a consultar")+(i.r?" \u00b7 Ref "+escapa(i.r):"")+'</p>'
+       +     (i.p>0 ? '<p class="cip">'+bs(i.p*i.q)+'</p>' : '<p class="cip q">Precio a consultar</p>')
+       +     '<div class="qbox"><button type="button" data-d="-1" aria-label="Quitar uno">\u2212</button>'
+       +       '<span>'+i.q+'</span>'
+       +       '<button type="button" data-d="1" aria-label="Agregar uno">+</button></div>'
+       +   '</div>'
+       +   '<button class="cidel" type="button">Quitar</button>'
+       + '</div>';
+  });
+  lista.innerHTML = h;
+  $$("img[data-rel]", lista).forEach(function(im){ wireImg(im, im.getAttribute("data-rel")); });
+  $$(".ci", lista).forEach(function(row){
+    var f=row.getAttribute("data-f"), t=row.getAttribute("data-t");
+    $$("button[data-d]", row).forEach(function(b){
+      b.addEventListener("click", function(){ CART.muda(f,t,+b.getAttribute("data-d")); pinta(); });
+    });
+    row.querySelector(".cidel").addEventListener("click", function(){ CART.tira(f,t); pinta(); });
+  });
+
+  var tt = CART.total(), temQR = !!QR;
+  var c = '<div class="bloco">'
+    + '<div class="tot"><span class="tl2">'+(tt.parcial?"Subtotal":"Total")+'</span>'
+    + '<span class="tv">'+(tt.valor>0?bs(tt.valor):"A consultar")+'</span></div>'
+    + (tt.parcial?'<p class="nota">Hay piezas sin precio en la web. Te pasamos esos precios por WhatsApp.</p>':'')
+    + '<p class="nota">El env\u00edo no est\u00e1 incluido. Te lo calculamos seg\u00fan tu ciudad.</p>'
+    + '</div>';
+
+  c += '<div class="bloco"><h2>'+(temQR?"Pagar y enviar":"Enviar el pedido")+'</h2>';
+  if(temQR){
+    c += '<div class="paso"><span class="num">1</span><div class="tx">Pag\u00e1 con <b>QR</b> desde tu app del banco'
+       + (tt.valor>0 && !tt.parcial ? ': <b>'+bs(tt.valor)+'</b>' : '') + '.</div></div>';
+    c += '<div class="qrbox"><img src="'+asset(QR)+'" alt="C\u00f3digo QR del BNB para pagar a Michely Modas">'
+       + '<p class="quien">Pagar a <b>Velasco Ramirez Alexandre</b><br>Cuenta BNB 3503690542</p></div>';
+    c += '<p class="tip">Desde el celular no se puede escanear el QR de tu propia pantalla: '
+       + 'guard\u00e1 la imagen y abrila con la opci\u00f3n <b>leer QR desde la galer\u00eda</b> de tu app.</p>';
+    c += '<div class="paso"><span class="num">2</span><div class="tx">Sac\u00e1 <b>captura del comprobante</b>.</div></div>';
+    c += '<div class="paso"><span class="num">3</span><div class="tx">Toc\u00e1 el bot\u00f3n de abajo: te abre el WhatsApp con el pedido ya escrito. <b>Adjunt\u00e1 ah\u00ed la captura.</b></div></div>';
+  }else{
+    c += '<div class="paso"><span class="num">1</span><div class="tx">Toc\u00e1 el bot\u00f3n de abajo: te abre el WhatsApp con <b>el pedido ya escrito</b>.</div></div>';
+    c += '<div class="paso"><span class="num">2</span><div class="tx">Te pasamos el <b>QR</b> con el total y el env\u00edo a tu ciudad.</div></div>';
+    c += '<div class="paso"><span class="num">3</span><div class="tx">Pag\u00e1s y nos mand\u00e1s la <b>captura del comprobante</b> por ah\u00ed mismo.</div></div>';
+  }
+  c += '<div class="aviso"><b>Importante:</b> el pedido queda confirmado cuando verificamos el pago y que tengamos la pieza en tu talla. '
+     + 'De cada modelo entran pocas por talla. Si justo se acab\u00f3, te devolvemos el dinero o lo us\u00e1s en otra pieza, como prefieras.</div>';
+
+  c += '<div class="sfoot">'
+     + (temQR
+        ? '<button class="sbtn wa" type="button" id="wapago">'+WA_SVG+'Ya pagu\u00e9, enviar pedido</button>'
+          + '<button class="sghost" type="button" id="waconsulta">Prefiero consultar antes de pagar</button>'
+        : '<button class="sbtn wa" type="button" id="waconsulta">'+WA_SVG+'Enviar pedido por WhatsApp</button>')
+     + '<a class="sghost" href="'+LOJA+'#nuevo" style="display:block;text-align:center;line-height:46px;text-decoration:none">Seguir mirando</a>'
+     + '</div></div>';
+
+  cierre.innerHTML = c;
+
+  function manda(pago){
+    var href = waLink(textoPedido(pago));
+    if(!href) return;
+    window.open(href, "_blank", "noopener");
+  }
+  var bp = $("#wapago"); if(bp) bp.addEventListener("click", function(){ manda(true); });
+  $("#waconsulta").addEventListener("click", function(){ manda(false); });
+}
+
+wireImg($("#selo"), "assets/selo.jpg");
+pinta();
+
+})();
+</script>
+</body>
+</html>

@@ -287,74 +287,6 @@ p{margin:0}
 .cartbtn .qt{font-family:var(--mono);font-size:.76rem;background:var(--rose-light);color:#3E3238;
   border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
 
-.sheetbg{position:fixed;inset:0;z-index:70;background:rgba(38,30,34,.52);opacity:0;pointer-events:none;
-  transition:opacity .34s var(--ease)}
-.sheetbg.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;z-index:71;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--canvas);
-  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s var(--ease);
-  box-shadow:-18px 0 46px rgba(23,36,59,.16)}
-.sheet.on{transform:none}
-@media (max-width:560px){
-  .sheet{top:auto;width:100%;max-height:92vh;border-radius:18px 18px 0 0;transform:translateY(100%)}
-}
-.shead{display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:20px clamp(18px,4vw,26px);border-bottom:1px solid var(--line)}
-.shead h3{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--ink)}
-.sclose{border:0;background:none;cursor:pointer;color:var(--ink-soft);font-size:1.5rem;line-height:1;
-  min-width:44px;min-height:44px;border-radius:50%}
-.sclose:hover{color:var(--ink);background:var(--canvas-deep)}
-.sbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px)}
-.sfoot{border-top:1px solid var(--line);padding:clamp(16px,3vw,22px) clamp(18px,4vw,26px);background:var(--panel)}
-
-.ci{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid var(--line)}
-.ci:last-child{border-bottom:0}
-.ci img{width:62px;height:62px;border-radius:10px;object-fit:cover;flex:none;background:var(--canvas-deep)}
-.ci .cin{font-weight:600;font-size:.92rem;color:var(--ink);line-height:1.3}
-.ci .cit{font-family:var(--mono);font-size:.71rem;letter-spacing:.07em;color:var(--ink-soft);margin-top:4px;text-transform:uppercase}
-.ci .cip{font-weight:700;font-size:.92rem;color:var(--ink);margin-top:6px}
-.ci .cip.q{font-weight:600;font-size:.82rem;color:var(--ink-soft)}
-.qbox{display:flex;align-items:center;gap:2px;margin-top:8px}
-.qbox button{width:30px;height:30px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);
-  cursor:pointer;font-size:1rem;line-height:1;border-radius:8px}
-.qbox button:hover{border-color:var(--ink)}
-.qbox span{font-family:var(--mono);font-size:.84rem;min-width:30px;text-align:center}
-.cidel{margin-left:auto;align-self:flex-start;border:0;background:none;cursor:pointer;
-  font-size:.76rem;color:var(--ink-soft);text-decoration:underline;padding:4px}
-.cidel:hover{color:var(--accent)}
-
-.tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
-.tot .tl2{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.tot .tv{font-family:var(--display);font-size:1.6rem;color:var(--ink)}
-.nota{font-size:.8rem;color:var(--ink-soft);line-height:1.5;margin-top:8px}
-.sbtn{margin-top:14px;width:100%;min-height:52px;border:0;border-radius:999px;cursor:pointer;
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--body);font-weight:600;font-size:.98rem;background:var(--accent);color:#fff;
-  transition:background .3s var(--ease)}
-.sbtn:hover{background:var(--accent-hover)}
-.sbtn:disabled{opacity:.45;cursor:not-allowed}
-.sbtn.wa{background:#1F7A4D}
-.sbtn.wa:hover{background:#19653f}
-.sbtn svg{width:19px;height:19px;flex:none}
-.sghost{margin-top:10px;width:100%;min-height:46px;border:1.5px solid var(--line);background:var(--panel);
-  border-radius:999px;cursor:pointer;font-family:var(--body);font-weight:600;font-size:.88rem;color:var(--ink-soft)}
-.sghost:hover{border-color:var(--ink);color:var(--ink)}
-.vazio{text-align:center;padding:48px 10px;color:var(--ink-soft)}
-.vazio p{margin-top:10px;font-size:.92rem}
-
-.paso{display:flex;gap:12px;padding:13px 0}
-.paso .num{flex:none;width:25px;height:25px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
-  font-family:var(--mono);font-size:.76rem;display:flex;align-items:center;justify-content:center;font-weight:500}
-.paso .tx{font-size:.9rem;line-height:1.55;color:var(--ink)}
-.paso .tx b{font-weight:700}
-.qrbox{text-align:center;margin:6px 0 4px;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.qrbox img{width:min(300px,88%);height:auto;border-radius:8px}
-.qrbox p{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);margin-top:11px;text-transform:uppercase}
-.qrbox .quien{font-family:var(--body);font-size:.84rem;letter-spacing:.01em;color:var(--ink);text-transform:none;line-height:1.5}
-.qrbox .quien b{font-weight:700}
-.tip{font-size:.8rem;line-height:1.55;color:var(--ink-soft);margin:10px 2px 2px}
-.tip b{color:var(--ink);font-weight:700}
-.aviso{margin-top:14px;padding:13px 15px;background:var(--accent-soft);border-radius:11px;
-  font-size:.84rem;line-height:1.55;color:#5A3F46}
 
 /* etiqueta de chegada: o elemento assinatura */
 .tag{position:absolute;top:0;right:15px;width:52px;height:80px;z-index:2;pointer-events:none;
@@ -730,24 +662,13 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </footer>
 
 <!-- ============ CARRINHO ============ -->
-<button class="cartbtn" id="cartbtn" type="button" aria-label="Ver mi pedido">
+<a class="cartbtn" id="cartbtn" href="carrito.html" aria-label="Ir a mi pedido">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M3 4h2l2.4 11.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L20 8H6"/>
     <circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/>
   </svg>
   Mi pedido <span class="qt" id="cartqt">0</span>
-</button>
-
-<div class="sheetbg" id="sheetbg"></div>
-
-<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheettit">
-  <div class="shead">
-    <h3 id="sheettit">Mi pedido</h3>
-    <button class="sclose" id="sclose" type="button" aria-label="Cerrar">&times;</button>
-  </div>
-  <div class="sbody" id="sbody"></div>
-  <div class="sfoot" id="sfoot"></div>
-</aside>
+</a>
 
 
 <script>
@@ -895,22 +816,6 @@ $$(".js-wa").forEach(function(a){
   if(href){ a.href=href; a.target="_blank"; a.rel="noopener"; }
 });
 
-/* ============================================================
-   CARRINHO
-   ------------------------------------------------------------
-   A pagina nao cobra e nao confere pagamento nenhum: ela monta
-   o pedido, mostra o QR e manda tudo escrito para o WhatsApp.
-   Quem confere o comprovante contra o extrato e a loja.
-
-   El QR del BNB esta en assets/qr.jpg. Es estatico y sin monto:
-   la clienta escribe el total, por eso la pantalla se lo muestra.
-   OJO: ESE QR VENCE EL 2 DE MARZO DE 2027. Despues de esa fecha hay
-   que generar uno nuevo en el banco y reemplazar el archivo, o dejar
-   QR vacio -- entonces la pagina vuelve a decir que el QR llega por
-   WhatsApp, que es verdad y no promete de menos.
-   ============================================================ */
-var QR = "assets/qr.jpg";
-
 function bs(n){ return "Bs " + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
 /* "P M G" vira ["P","M","G"]; "36 al 46" vira os pares 36..46;
@@ -972,176 +877,22 @@ var CART = (function(){
   };
 })();
 
-/* o texto que chega no WhatsApp da loja */
-function textoPedido(pago){
-  var linhas = ["Hola! Quiero hacer este pedido:", ""];
-  CART.itens().forEach(function(i,n){
-    var l = (n+1)+") "+i.n;
-    if(i.r) l += " (ref "+i.r+")";
-    if(i.t && i.t!=="-") l += " — Talla "+i.t;
-    l += " — "+i.q+" u.";
-    l += i.p>0 ? " — "+bs(i.p*i.q) : " — precio a consultar";
-    linhas.push(l);
-  });
-  var t = CART.total();
-  linhas.push("");
-  if(t.valor>0) linhas.push((t.parcial?"Subtotal":"Total")+": "+bs(t.valor)+(t.parcial?" + piezas a consultar":""));
-  if(t.valor>0) linhas.push("(sin el env\u00edo)");
-  linhas.push("");
-  linhas.push(pago
-    ? "Ya hice el pago por QR. Les mando la captura del comprobante acá mismo."
-    : "Antes de pagar quiero confirmar disponibilidad y el total con el envío.");
-  return linhas.join("\n");
-}
-
-/* ---------- a gaveta do pedido ---------- */
-var WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .8 1.7 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5-.1 1.1Z"/></svg>';
-
-var pintaCarrinho, abreGaveta;
-
+/* ---------- o contador do botao flutuante ---------- */
+/* A gaveta virou pagina: carrito.html. Aqui so sobra manter o numerinho
+   do botao em dia; quem desenha o pedido e a outra pagina. */
+var pintaCarrinho;
 (function(){
-  var btn=$("#cartbtn"), qt=$("#cartqt"), bg=$("#sheetbg"), sh=$("#sheet"),
-      body=$("#sbody"), foot=$("#sfoot"), tit=$("#sheettit"), fechar=$("#sclose");
-  if(!btn||!sh) return;
-
-  var tela = "pedido";   /* "pedido" ou "pago" */
-
-  function abre(qual){
-    tela = qual || "pedido";
-    /* marca como aberta ANTES de desenhar: pinta() sai cedo se a gaveta
-       ainda estiver fechada, e era isso que deixava a lista vazia. */
-    bg.classList.add("on"); sh.classList.add("on");
-    pinta();
-    document.body.style.overflow="hidden";
-  }
-  function fecha(){
-    bg.classList.remove("on"); sh.classList.remove("on");
-    document.body.style.overflow="";
-  }
-  abreGaveta = abre;
-
-  function escapa(x){
-    return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-  }
-
-  function telaPedido(){
-    var its = CART.itens();
-    tit.textContent = "Mi pedido";
-    if(!its.length){
-      body.innerHTML = '<div class="vazio"><p>Todavía no agregaste nada.</p>'
-        + '<p>Elegí tu talla en las piezas que te gusten y tocá <b>Agregar al pedido</b>.</p></div>';
-      foot.innerHTML = '<button class="sghost" type="button" id="segue">Seguir mirando</button>';
-      $("#segue").addEventListener("click", fecha);
-      return;
-    }
-    var h="";
-    its.forEach(function(i){
-      h += '<div class="ci" data-f="'+escapa(i.f)+'" data-t="'+escapa(i.t)+'">'
-         +   '<img alt="" data-rel="assets/pecas/'+escapa(i.f)+'">'
-         +   '<div>'
-         +     '<p class="cin">'+escapa(i.n)+'</p>'
-         +     '<p class="cit">'+(i.t && i.t!=="-" ? "Talla "+escapa(i.t) : "Talla a consultar")+(i.r?" · Ref "+escapa(i.r):"")+'</p>'
-         +     (i.p>0 ? '<p class="cip">'+bs(i.p*i.q)+'</p>' : '<p class="cip q">Precio a consultar</p>')
-         +     '<div class="qbox"><button type="button" data-d="-1" aria-label="Quitar uno">−</button>'
-         +       '<span>'+i.q+'</span>'
-         +       '<button type="button" data-d="1" aria-label="Agregar uno">+</button></div>'
-         +   '</div>'
-         +   '<button class="cidel" type="button">Quitar</button>'
-         + '</div>';
-    });
-    body.innerHTML = h;
-    $$("img[data-rel]", body).forEach(function(im){ im.src = asset(im.getAttribute("data-rel")); });
-
-    $$(".ci", body).forEach(function(row){
-      var f=row.getAttribute("data-f"), t=row.getAttribute("data-t");
-      $$("button[data-d]", row).forEach(function(b){
-        b.addEventListener("click", function(){ CART.muda(f,t,+b.getAttribute("data-d")); pinta(); });
-      });
-      row.querySelector(".cidel").addEventListener("click", function(){ CART.tira(f,t); pinta(); });
-    });
-
-    var tt = CART.total();
-    foot.innerHTML =
-      '<div class="tot"><span class="tl2">'+(tt.parcial?"Subtotal":"Total")+'</span>'
-      + '<span class="tv">'+(tt.valor>0?bs(tt.valor):"A consultar")+'</span></div>'
-      + (tt.parcial?'<p class="nota">Hay piezas sin precio en la web. Te pasamos esos precios por WhatsApp.</p>':'')
-      + '<p class="nota">El envío no está incluido. Te lo calculamos según tu ciudad.</p>'
-      + '<button class="sbtn" type="button" id="irpago">Continuar</button>'
-      + '<button class="sghost" type="button" id="segue">Seguir mirando</button>';
-    $("#irpago").addEventListener("click", function(){ tela="pago"; pinta(); body.scrollTop=0; });
-    $("#segue").addEventListener("click", fecha);
-  }
-
-  function telaPago(){
-    var tt = CART.total();
-    var temQR = !!QR;
-    tit.textContent = temQR ? "Pagar y enviar" : "Enviar pedido";
-    var h = "";
-
-    if(temQR){
-      /* com o QR na pagina: ela paga, tira print e manda tudo junto */
-      h += '<div class="paso"><span class="num">1</span><div class="tx">Pagá con <b>QR</b> desde tu app del banco'
-         + (tt.valor>0 && !tt.parcial ? ': <b>'+bs(tt.valor)+'</b>' : '')
-         + '.</div></div>';
-      /* mostra o nome da conta: e o que o app do banco dela vai exibir,
-         e se nao bater com a tela ela desconfia e desiste */
-      h += '<div class="qrbox"><img src="'+asset(QR)+'" alt="Código QR del BNB para pagar a Michely Modas">'
-         + '<p class="quien">Pagar a <b>Velasco Ramirez Alexandre</b><br>Cuenta BNB 3503690542</p></div>';
-      /* no celular ela nao consegue escanear o QR da propria tela:
-         tem que salvar a imagem e abrir pela galeria no app do banco */
-      h += '<p class="tip">Desde el celular no se puede escanear el QR de tu propia pantalla: '
-         + 'guard\u00e1 la imagen y abrila con la opci\u00f3n <b>leer QR desde la galer\u00eda</b> de tu app.</p>';
-      h += '<div class="paso"><span class="num">2</span><div class="tx">Sacá <b>captura del comprobante</b>.</div></div>';
-      h += '<div class="paso"><span class="num">3</span><div class="tx">Tocá el botón de abajo: te abre el WhatsApp con el pedido ya escrito. <b>Adjuntá ahí la captura.</b></div></div>';
-    }else{
-      /* sem QR configurado: nao manda pagar, porque ela ainda nao sabe
-         o total com o envio nem para onde pagar */
-      h += '<div class="paso"><span class="num">1</span><div class="tx">Tocá el botón de abajo: te abre el WhatsApp con <b>el pedido ya escrito</b>.</div></div>';
-      h += '<div class="paso"><span class="num">2</span><div class="tx">Te pasamos el <b>QR</b> con el total y el envío a tu ciudad.</div></div>';
-      h += '<div class="paso"><span class="num">3</span><div class="tx">Pagás y nos mandás la <b>captura del comprobante</b> por ahí mismo.</div></div>';
-    }
-
-    h += '<div class="aviso"><b>Importante:</b> el pedido queda confirmado cuando verificamos el pago y que tengamos la pieza en tu talla. '
-       + 'De cada modelo entran pocas por talla. Si justo se acabó, te devolvemos el dinero o lo usás en otra pieza, como prefieras.</div>';
-    body.innerHTML = h;
-
-    foot.innerHTML = temQR
-      ? '<button class="sbtn wa" type="button" id="wapago">'+WA_SVG+'Ya pagué, enviar pedido</button>'
-        + '<button class="sghost" type="button" id="waconsulta">Prefiero consultar antes de pagar</button>'
-        + '<button class="sghost" type="button" id="volta">Volver al pedido</button>'
-      : '<button class="sbtn wa" type="button" id="waconsulta">'+WA_SVG+'Enviar pedido por WhatsApp</button>'
-        + '<button class="sghost" type="button" id="volta">Volver al pedido</button>';
-
-    function manda(pago){
-      var href = waLink(textoPedido(pago));
-      if(!href) return;
-      window.open(href, "_blank", "noopener");
-    }
-    var bp = $("#wapago"); if(bp) bp.addEventListener("click", function(){ manda(true); });
-    $("#waconsulta").addEventListener("click", function(){ manda(false); });
-    $("#volta").addEventListener("click", function(){ tela="pedido"; pinta(); body.scrollTop=0; });
-  }
-
-  function pinta(){
-    var n = CART.qtd();
-    qt.textContent = n;
-    btn.classList.toggle("on", n>0);
-    if(!sh.classList.contains("on")) return;
-    if(n===0) tela="pedido";
-    if(tela==="pago") telaPago(); else telaPedido();
-  }
+  var btn=$("#cartbtn"), qt=$("#cartqt");
+  if(!btn) return;
+  /* o endereco passa pela mesma funcao das fotos: na hospedagem da
+     "carrito.html", e dentro do visualizador do Claude da o caminho
+     completo, que e onde o link relativo simples quebraria */
+  btn.setAttribute("href", asset("carrito.html"));
   pintaCarrinho = function(){
     var n = CART.qtd();
     qt.textContent = n;
     btn.classList.toggle("on", n>0);
-    if(sh.classList.contains("on")) pinta();
   };
-
-  btn.addEventListener("click", function(){ abre("pedido"); });
-  fechar.addEventListener("click", fecha);
-  bg.addEventListener("click", fecha);
-  document.addEventListener("keydown", function(e){ if(e.key==="Escape") fecha(); });
-
   pintaCarrinho();
 })();
 
